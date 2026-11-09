@@ -1,3 +1,132 @@
-   <!DOCTYPE html>
-   <html><head><title>DesktopWiki</title></head>
-   <body><h1>DesktopWiki</h1><p>Coming soon.</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DesktopWiki</title>
+  <meta name="description" content="A wiki for your home or small team that runs from one Windows program on your own PC, with everything stored in one file.">
+  <link rel="icon" type="image/png" href="dw-book.png">
+  <link rel="apple-touch-icon" href="dw-book.png">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="./">
+          <img src="dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+
+      <h1>A wiki for your family or small team, running on your own PC.</h1>
+      <p class="lede">DesktopWiki gives you spaces, a page tree and a familiar visual editor, the way classic team wikis worked. It's one Windows program: start it, and anyone on your home or office network can read and edit pages from a browser or phone.</p>
+
+      <div class="actions">
+        <span class="status-pill">In development</span>
+        <a href="#features">What it does</a>
+        <a href="#how">How it runs</a>
+        <a href="#roadmap">What's next</a>
+      </div>
+
+      <p class="fine">For Windows 10 and 11. No server, no database to install and no cloud account. Your wiki lives in a single file you can back up by copying it.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="features">
+      <h2>A classic wiki, feature for feature</h2>
+      <p class="section-lede">If you've kept notes in a team wiki at work, you'll know your way around: spaces, a page tree on the left and an editor that looks like the page.</p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Spaces and a page tree</h3>
+          <p>Give each topic its own space, such as Household, Recipes, Travel or a project, with a home page and a tree of pages you can drag to reorder.</p>
+        </article>
+        <article class="card">
+          <h3>Edit what you see</h3>
+          <p>A visual editor with headings, lists, tables, code blocks, links and images, plus info, note, warning and tip panels. No markup to learn.</p>
+        </article>
+        <article class="card">
+          <h3>Attachments</h3>
+          <p>Upload files to any page, see them listed with it, and drop images straight into the text.</p>
+        </article>
+        <article class="card">
+          <h3>Page history</h3>
+          <p>Every save is kept. Compare any two versions side by side and restore an older one.</p>
+        </article>
+        <article class="card">
+          <h3>Search everything</h3>
+          <p>Fast full-text search across every page, in one space or in all of them.</p>
+        </article>
+        <article class="card">
+          <h3>Accounts for everyone</h3>
+          <p>Each person signs in with their own account. A setup wizard creates the first admin the first time you run it.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how">
+      <h2>How it runs</h2>
+      <div class="split">
+        <div>
+          <h3>One program, in the system tray</h3>
+          <p>DesktopWiki is a single <code>.exe</code> with nothing else to install. It sits in the system tray with three choices: Open, Backup now and Quit.</p>
+        </div>
+        <div>
+          <h3>Open it from any device</h3>
+          <p>It serves the wiki on your network (port 8090 by default), so phones, tablets and other PCs in the house or office use it from a browser.</p>
+        </div>
+        <div>
+          <h3>One file holds everything</h3>
+          <p>Pages, history and attachments are all stored in one database file. Backup is copying that file.</p>
+        </div>
+        <div>
+          <h3>Backups while you work</h3>
+          <p>Click Backup now or set a schedule, and DesktopWiki saves a safe snapshot to a folder you choose, even while people are editing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <h2>What's next</h2>
+      <p class="section-lede">The first release covers everything above. These are planned after it:</p>
+      <ul class="checklist">
+        <li><strong>Bring your old wiki.</strong> Import a Confluence space export, with its panels, code blocks, expand sections, tables of contents and attachments. Anything that can't be converted is kept as a marked placeholder, never dropped.</li>
+        <li><strong>Working together.</strong> Comments, labels, page templates, @mentions, page restrictions and blog posts.</li>
+        <li><strong>Away from home.</strong> Optional secure remote access to your wiki from outside your network.</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Follow along</h2>
+      <p>DesktopWiki isn't ready to download yet. Check back here for the first release.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <span class="footer-note">Also from EmuKey: <a href="https://inclosemail.com/">InCloseMail</a></span>
+    </div>
+    <div class="wrap">
+      <p class="legal">DesktopWiki is made by EmuKey LLC. It is not made by, endorsed by or affiliated with Atlassian. Confluence is a trademark of Atlassian. Windows is a trademark of the Microsoft group of companies.</p>
+    </div>
+  </footer>
+</body>
+</html>

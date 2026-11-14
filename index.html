@@ -41,10 +41,11 @@
         <span class="status-pill">In development</span>
         <a href="#features">What it does</a>
         <a href="#how">How it runs</a>
+        <a href="#requirements">Requirements</a>
         <a href="#roadmap">What's next</a>
       </div>
 
-      <p class="fine">For Windows 10 and 11. No server, no database to install and no cloud account. Your wiki lives in a single file you can back up by copying it.</p>
+      <p class="fine">For Windows 10 (version 1809 or later) and Windows 11, 64-bit. No server, no database to install and no cloud account. Your wiki lives in a single file you can back up by copying it.</p>
     </div>
   </header>
 
@@ -99,6 +100,29 @@
         <div>
           <h3>Backups while you work</h3>
           <p>Click Backup now or set a schedule, and DesktopWiki saves a safe snapshot to a folder you choose, even while people are editing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="requirements">
+      <h2>Requirements</h2>
+      <p class="section-lede">DesktopWiki runs on one Windows PC. Everyone else just needs a browser.</p>
+      <div class="split">
+        <div>
+          <h3>The wiki's PC</h3>
+          <p>Windows 10 version 1809 or later, Windows 11, or Windows Server 2019 or later, 64-bit. About 250 MB of disk, plus room for your wiki and its backups. Nothing else to install: no .NET, no database server.</p>
+        </div>
+        <div>
+          <h3>Installing</h3>
+          <p>An administrator account on that PC, because the installer opens the wiki's port in Windows Firewall. Running it as a Windows service needs one too.</p>
+        </div>
+        <div>
+          <h3>Your network</h3>
+          <p>Other devices on the same home or office network reach it on port 8090 (you can change it). Windows must treat that network as Private, not Public. The PC needs to be on and awake while people use the wiki.</p>
+        </div>
+        <div>
+          <h3>Phones, tablets and other PCs</h3>
+          <p>A current Edge, Chrome, Firefox or Safari, on Windows, Mac, iPhone, iPad or Android. Nothing to install on them.</p>
         </div>
       </div>
     </section>

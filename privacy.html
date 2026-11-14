@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy - DesktopWiki</title>
+  <meta name="description" content="What DesktopWiki and desktopwiki.com collect, and what they don't.">
+  <link rel="icon" type="image/png" href="dw-book.png">
+  <link rel="apple-touch-icon" href="dw-book.png">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="./">
+          <img src="dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <h1>Privacy</h1>
+    </div>
+  </header>
+
+  <main class="wrap doc">
+    <p>DesktopWiki is made by EmuKey LLC. This page says what the DesktopWiki app and this website collect. The full terms are in the license you accept when you install it.</p>
+
+    <h2>Your wiki stays on your PC</h2>
+    <p>Your wiki (pages, history, attachments, accounts, and the encrypted contents of password pages) is one file on the PC that runs DesktopWiki, with its backups in the folder you choose. DesktopWiki serves it only to the devices that connect to it on your network. It never sends your pages, attachments, accounts or any other content to EmuKey LLC or anyone else. Apart from the anonymous usage statistics below, it has no analytics, telemetry, advertising or crash reporting.</p>
+
+    <h2>Update checks</h2>
+    <p>DesktopWiki asks GitHub (api.github.com) whether a newer version is available when it starts and every few hours, and reads a small public file on GitHub (raw.githubusercontent.com) that says whether the beta is still running. It downloads an update only when an administrator chooses to install it, and installs only one signed by EmuKey LLC. GitHub receives your IP address and the app&rsquo;s version number, and handles them under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>.</p>
+
+    <h2>Usage statistics</h2>
+    <p>To count how many people use DesktopWiki, once a day while it runs it sends EmuKey a short report with:</p>
+    <ul>
+      <li>a random install ID, made on your PC the first time (it identifies that installation, not you);</li>
+      <li>the version of DesktopWiki;</li>
+      <li>the version of Windows;</li>
+      <li>whether it&rsquo;s a new installation.</li>
+    </ul>
+    <p>It never contains your wiki&rsquo;s name, pages, files, accounts, names, email addresses or your computer&rsquo;s name. We use the reports only as totals: how many installations there are, how many are in use, and which versions of DesktopWiki and Windows they run. The reports go to a counter we run on Cloudflare; your IP address reaches Cloudflare to deliver the report but isn&rsquo;t stored with it. We keep reports for up to 400 days and never sell or share them.</p>
+    <p>To turn them off, an administrator clears <strong>Send anonymous usage statistics</strong> in <strong>Admin &rarr; Settings</strong>.</p>
+
+    <h2>This website</h2>
+    <p>desktopwiki.com counts its visits with Cloudflare Web Analytics, to learn how many people visit, which pages they read, where they came from and how many download the app. For each page view it records the page, the site that linked to it, the browser, operating system and type of device, and the country. It sets no cookies and stores nothing in your browser, and Cloudflare says it doesn&rsquo;t fingerprint visitors or use IP addresses to follow them. We see only totals, never individual visitors. When you click Download, the link also passes through a download counter we run on Cloudflare, which counts each person once a day: it keeps a one-way scramble of your IP address and browser made with a secret that changes every day, so it can&rsquo;t be turned back into your IP address or matched with another day, and your IP address itself isn&rsquo;t stored. See the <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a>. The site is hosted on GitHub Pages, which receives your IP address to serve it.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about privacy: <a href="mailto:support@desktopwiki.com">support@desktopwiki.com</a>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="./">Home</a></nav>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see "This website" above). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CLOUDFLARE_WEB_ANALYTICS_TOKEN"}'></script>
+</body>
+</html>

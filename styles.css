@@ -139,6 +139,36 @@ code {
   border-radius: 6px;
 }
 
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: #1c2563;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.actions a.button { color: #1c2563; }
+.button:hover { background: #f6bc63; }
+.button:focus-visible { outline: 2px solid var(--hero-text); outline-offset: 2px; }
+
+.demo-note {
+  color: var(--hero-muted);
+  margin: 0 0 14px;
+  max-width: 760px;
+}
+.demo-note strong { color: var(--hero-text); }
+
+.hero-small { padding-bottom: 36px; }
+.hero-small h1 { margin-bottom: 0; }
+
+/* Text pages (download, privacy) */
+
+.doc { padding-top: 32px; max-width: 760px; }
+.doc h2 { margin-top: 32px; font-size: 1.3rem; }
+
+footer nav a { margin-right: 16px; }
+
 .fine {
   color: var(--hero-muted);
   font-size: 0.875rem;

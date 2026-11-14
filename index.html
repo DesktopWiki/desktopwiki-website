@@ -38,13 +38,14 @@
       <p class="lede">DesktopWiki gives you spaces, a page tree and a familiar visual editor, the way classic team wikis worked. It's one Windows program: start it, and anyone on your home or office network can read and edit pages from a browser or phone.</p>
 
       <div class="actions">
-        <span class="status-pill">In development</span>
+        <a class="button" href="download.html">Download the free beta</a>
         <a href="#features">What it does</a>
         <a href="#how">How it runs</a>
         <a href="#requirements">Requirements</a>
         <a href="#roadmap">What's next</a>
       </div>
 
+      <p class="demo-note"><strong>Look around first:</strong> open the demo wiki from setup or the tray icon. It's the Morgan family's wiki, with their spaces, pages, pictures and files, and you can view it as each of them.</p>
       <p class="fine">For Windows 10 (version 1809 or later) and Windows 11, 64-bit. No server, no database to install and no cloud account. Your wiki lives in a single file you can back up by copying it.</p>
     </div>
   </header>
@@ -57,27 +58,39 @@
       <div class="grid">
         <article class="card">
           <h3>Spaces and a page tree</h3>
-          <p>Give each topic its own space, such as Household, Recipes, Travel or a project, with a home page and a tree of pages you can drag to reorder.</p>
+          <p>A shared space for each topic, such as Household, Recipes or a project, plus a personal space for everyone. Each has a home page, a page tree, its own shortcuts and a picture.</p>
         </article>
         <article class="card">
           <h3>Edit what you see</h3>
-          <p>A visual editor with headings, lists, tables, code blocks, links and images, plus info, note, warning and tip panels. No markup to learn.</p>
+          <p>A visual editor with headings, lists, tables, code blocks, links to other pages, and info, note, warning and tip panels and expand sections. No markup to learn.</p>
         </article>
         <article class="card">
-          <h3>Attachments</h3>
-          <p>Upload files to any page, see them listed with it, and drop images straight into the text.</p>
+          <h3>Attachments and pictures</h3>
+          <p>Attach files to any page, or paste and drop pictures straight into the text. Upload a file again and the earlier version is kept.</p>
         </article>
         <article class="card">
           <h3>Page history</h3>
-          <p>Every save is kept. Compare any two versions side by side and restore an older one.</p>
+          <p>Turn it on and every save is kept. See who changed what, compare any two versions side by side, and restore an older one.</p>
         </article>
         <article class="card">
           <h3>Search everything</h3>
-          <p>Fast full-text search across every page, in one space or in all of them.</p>
+          <p>Results as you type, across every page you can see or in one space, with the matching words marked. &ldquo;Boil&rdquo; finds &ldquo;boiler&rdquo; and &ldquo;boiling&rdquo;.</p>
         </article>
         <article class="card">
-          <h3>Accounts for everyone</h3>
-          <p>Each person signs in with their own account. A setup wizard creates the first admin the first time you run it.</p>
+          <h3>Accounts and permissions</h3>
+          <p>Everyone signs in with their own account as an admin, editor or reader. Each space has its own permissions, and a page can be locked so only you and the people you choose can see or edit it.</p>
+        </article>
+        <article class="card">
+          <h3>Password pages</h3>
+          <p>Keep the family's Wi-Fi, router and account passwords on a page that's encrypted in the browser with a vault password only its people know. Even the wiki's PC can't read it.</p>
+        </article>
+        <article class="card">
+          <h3>Your own lists</h3>
+          <p>Recently worked on, recently visited, saved for later and starred spaces, and an All updates feed of what changed across the wiki.</p>
+        </article>
+        <article class="card">
+          <h3>Backups on a schedule</h3>
+          <p>Daily or weekly backups to the folder or drive you choose, safe to make while people edit. Restore one from Admin in a couple of clicks.</p>
         </article>
       </div>
     </section>
@@ -86,20 +99,20 @@
       <h2>How it runs</h2>
       <div class="split">
         <div>
-          <h3>One program, in the system tray</h3>
-          <p>DesktopWiki is a single <code>.exe</code> with nothing else to install. It sits in the system tray with three choices: Open, Backup now and Quit.</p>
+          <h3>In the tray, or as a service</h3>
+          <p>DesktopWiki runs from its icon in the system tray, and can start with Windows. Or run it as a Windows service, so the wiki is on whenever the PC is, even when nobody is signed in.</p>
         </div>
         <div>
-          <h3>Open it from any device</h3>
-          <p>It serves the wiki on your network (port 8090 by default), so phones, tablets and other PCs in the house or office use it from a browser.</p>
+          <h3>Open it from any device, securely</h3>
+          <p>It serves the wiki over HTTPS on your network (port 8090 by default), so phones, tablets and other PCs use it from a browser. A setup page with a QR code shows each device how to trust the wiki's own certificate.</p>
         </div>
         <div>
           <h3>One file holds everything</h3>
           <p>Pages, history and attachments are all stored in one database file. Backup is copying that file.</p>
         </div>
         <div>
-          <h3>Backups while you work</h3>
-          <p>Click Backup now or set a schedule, and DesktopWiki saves a safe snapshot to a folder you choose, even while people are editing.</p>
+          <h3>Updates from inside the app</h3>
+          <p>DesktopWiki checks for new versions and tells admins. One click installs it: the installer is signed by EmuKey LLC, and nothing else is run.</p>
         </div>
       </div>
     </section>
@@ -129,28 +142,31 @@
 
     <section id="roadmap">
       <h2>What's next</h2>
-      <p class="section-lede">The first release covers everything above. These are planned after it:</p>
+      <p class="section-lede">The beta covers everything above. These are planned next:</p>
       <ul class="checklist">
         <li><strong>Bring your old wiki.</strong> Import a Confluence space export, with its panels, code blocks, expand sections, tables of contents and attachments. Anything that can't be converted is kept as a marked placeholder, never dropped.</li>
-        <li><strong>Working together.</strong> Comments, labels, page templates, @mentions, page restrictions and blog posts.</li>
+        <li><strong>Working together.</strong> Watching pages and notifications, sharing, comments, labels, page templates, @mentions, a people directory and blog posts.</li>
         <li><strong>Away from home.</strong> Optional secure remote access to your wiki from outside your network.</li>
       </ul>
     </section>
 
-    <section id="contact">
-      <h2>Follow along</h2>
-      <p>DesktopWiki isn't ready to download yet. Check back here for the first release.</p>
+    <section id="download">
+      <h2>Try the free beta</h2>
+      <p>The beta is free. <a href="download.html">Download the installer</a>, run it on the PC that will hold the wiki, and setup opens in your browser. Updates install from the tray icon.</p>
     </section>
   </main>
 
   <footer>
     <div class="wrap footer-row">
       <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="privacy.html">Privacy</a></nav>
       <span class="footer-note">Also from EmuKey: <a href="https://inclosemail.com/">InCloseMail</a></span>
     </div>
     <div class="wrap">
       <p class="legal">DesktopWiki is made by EmuKey LLC. It is not made by, endorsed by or affiliated with Atlassian. Confluence is a trademark of Atlassian. Windows is a trademark of the Microsoft group of companies.</p>
     </div>
   </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CLOUDFLARE_WEB_ANALYTICS_TOKEN"}'></script>
 </body>
 </html>

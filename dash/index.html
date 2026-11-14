@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>DesktopWiki stats</title>
+  <meta name="color-scheme" content="light dark">
+  <style>
+    /* EmuKey's private DesktopWiki numbers. Served by the dw-dashboard Worker behind Cloudflare Access; this file
+       holds no data. The numbers come from that Worker's /api when the page opens. */
+    :root {
+      --bg: #f5f5f5; --surface: #ffffff; --text: #242424; --muted: #616161; --border: #e0e0e0;
+      --accent: #0f6b66; --accent-2: #e08a2b; --grid: #ececec;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1f1f1f; --surface: #292929; --text: #f0f0f0; --muted: #adadad; --border: #3d3d3d;
+              --accent: #4fbfb6; --accent-2: #f0a85a; --grid: #333333; }
+    }
+    * { box-sizing: border-box; }
+    html, body { background: var(--bg); color: var(--text); margin: 0; }
+    body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; font-size: 15px; line-height: 1.45; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-left)) 48px; display: flex; flex-direction: column; gap: 28px; }
+    header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }
+    h1 { font-size: 1.6rem; margin: 0; font-weight: 600; }
+    h2 { font-size: 1.1rem; margin: 0 0 4px; font-weight: 600; }
+    .muted { color: var(--muted); font-size: 0.85rem; }
+    section { display: flex; flex-direction: column; gap: 12px; }
+    .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+    .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .tile .label { color: var(--muted); font-size: 0.82rem; }
+    .tile .big { font-size: 2rem; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.15; }
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; min-width: 0; }
+    .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+    .chart { position: relative; }
+    .chart svg { display: block; width: 100%; height: auto; }
+    .chart text { fill: var(--muted); font-size: 11px; font-family: inherit; }
+    .tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+           padding: 4px 8px; font-size: 0.8rem; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.2); font-variant-numeric: tabular-nums; }
+    .bars { display: flex; flex-direction: column; gap: 6px; }
+    .bar { display: grid; grid-template-columns: minmax(90px, 30%) 1fr auto; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; font-size: 0.9rem; }
+    .bar .track { background: var(--grid); border-radius: 4px; height: 12px; overflow: hidden; }
+    .bar .fill { background: var(--accent); height: 100%; }
+    .tablewrap { overflow: auto; max-height: 360px; border: 1px solid var(--border); border-radius: 8px; }
+    table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+    th, td { text-align: left; padding: 6px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    th { position: sticky; top: 0; background: var(--surface); color: var(--muted); font-weight: 600; font-size: 0.82rem; }
+    td.num, th.num { text-align: right; }
+    .legend { display: flex; gap: 14px; font-size: 0.82rem; color: var(--muted); }
+    .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    .empty { color: var(--muted); font-size: 0.9rem; padding: 8px 0; }
+    #error { color: #c42b1c; }
+    details summary { cursor: pointer; }
+    details ul { color: var(--muted); font-size: 0.88rem; max-width: 75ch; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>DesktopWiki stats</h1>
+      <span class="muted" id="asof">Loading…</span>
+    </header>
+    <p id="error" hidden></p>
+
+    <section id="installs">
+      <h2>Installs in use</h2>
+      <div class="tiles">
+        <div class="tile"><span class="label">Installs ever</span><span class="big" id="t-ever">—</span><span class="muted">Different installs that reported</span></div>
+        <div class="tile"><span class="label">Active today</span><span class="big" id="t-today">—</span><span class="muted">Started today (UTC)</span></div>
+        <div class="tile"><span class="label">Active, last 7 days</span><span class="big" id="t-week">—</span><span class="muted">Started at least once</span></div>
+        <div class="tile"><span class="label">Active, last 30 days</span><span class="big" id="t-month">—</span><span class="muted">Started at least once</span></div>
+      </div>
+      <div class="panel">
+        <h2>Active installs each day</h2>
+        <div class="legend"><span><i style="background:var(--accent)"></i>Active</span><span><i style="background:var(--accent-2)"></i>New installs</span></div>
+        <div class="chart" id="c-daily"></div>
+      </div>
+      <div class="two">
+        <div class="panel"><h2>Versions in use</h2><p class="muted">Each install's latest version, last 7 days</p><div class="bars" id="b-versions"></div></div>
+        <div class="panel"><h2>Windows</h2><p class="muted">Installs active in the last 30 days</p><div class="bars" id="b-windows"></div></div>
+      </div>
+    </section>
+
+    <section id="site">
+      <h2>Downloads from the website</h2>
+      <div class="tiles">
+        <div class="tile"><span class="label">People, last 7 days</span><span class="big" id="s-week">—</span><span class="muted">Unique each day, added up</span></div>
+        <div class="tile"><span class="label">People, last 30 days</span><span class="big" id="s-month">—</span><span class="muted">Unique each day, added up</span></div>
+        <div class="tile"><span class="label">Download clicks, last 30 days</span><span class="big" id="s-clicks">—</span><span class="muted">Every click on Download</span></div>
+      </div>
+      <div class="panel">
+        <h2>People downloading each day</h2>
+        <p class="muted">Different people who clicked Download on desktopwiki.com that day. Not the app's updater, and not crawlers.</p>
+        <div class="chart" id="c-site"></div>
+      </div>
+    </section>
+
+    <section id="downloads">
+      <h2>Downloads from GitHub</h2>
+      <div class="tiles">
+        <div class="tile"><span class="label">Total downloads</span><span class="big" id="d-total">—</span><span class="muted">All releases; includes updates</span></div>
+        <div class="tile"><span class="label">Releases</span><span class="big" id="d-count">—</span><span class="muted">Published on GitHub</span></div>
+        <div class="tile"><span class="label">Newest release</span><span class="big" id="d-latest">—</span><span class="muted" id="d-latest-tag">&nbsp;</span></div>
+      </div>
+      <div class="panel">
+        <h2>Downloads of each release</h2>
+        <p class="muted">The last 60 releases, oldest on the left. A release only gains downloads while it's the newest.</p>
+        <div class="chart" id="c-releases"></div>
+      </div>
+      <div class="tablewrap">
+        <table aria-label="Releases and their downloads">
+          <thead><tr><th>Release</th><th>Published</th><th class="num">Downloads</th></tr></thead>
+          <tbody id="r-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <details>
+      <summary>What these numbers count</summary>
+      <ul>
+        <li>Installs come from the app's anonymous daily report (from 26.11.1002 on): one per Windows user on a PC, your own test copies included. Older versions don't report.</li>
+        <li>"New installs" are installs whose first report was their first ever launch. Until the app release after 26.11.1002, an older install that updated is counted as new too.</li>
+        <li>Website downloads count each person once a day: a one-way scramble of their IP address and browser with a secret that changes daily, so people can't be told apart across days and no IP address is kept. They start on 2026-11-10.</li>
+        <li>Downloads are GitHub's counts for each release's DesktopWiki.msi: the website's Download button, the app's updater and your own installs. They can't tell people apart.</li>
+      </ul>
+    </details>
+  </div>
+
+  <script>
+    const fmt = new Intl.NumberFormat();
+    const set = (id, v) => { document.getElementById(id).textContent = v; };
+    const day = (d) => new Date(d + 'T00:00:00Z').toLocaleDateString(undefined, { month: 'short', day: 'numeric', timeZone: 'UTC' });
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+
+    // A bar chart: rows of {key, label, value, extra?, tip}; drawn to the box's width, with a tooltip.
+    function bars(box, rows, { color = 'var(--accent)', extraColor = 'var(--accent-2)', height = 200 } = {}) {
+      box.replaceChildren();
+      if (!rows.length) { const p = document.createElement('p'); p.className = 'empty'; p.textContent = 'Nothing yet.'; box.appendChild(p); return; }
+      const w = Math.max(280, box.clientWidth), h = height, left = 36, bottom = 22, top = 8;
+      const max = Math.max(1, ...rows.map((r) => r.value));
+      const step = Math.pow(10, Math.floor(Math.log10(max))); const nice = Math.ceil(max / step) * step;
+      const y = (v) => h - bottom - (v / nice) * (h - bottom - top);
+      const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, role: 'img' }, box);
+      for (let i = 0; i <= 4; i++) {
+        const v = (nice / 4) * i, yy = y(v);
+        el('line', { x1: left, x2: w, y1: yy, y2: yy, stroke: 'var(--grid)' }, svg);
+        el('text', { x: left - 6, y: yy + 4, 'text-anchor': 'end' }, svg).textContent = fmt.format(Math.round(v * 10) / 10);
+      }
+      const bw = (w - left) / rows.length, gap = Math.min(4, bw * 0.25);
+      const tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; box.appendChild(tip);
+      const labelEvery = Math.max(1, Math.ceil(rows.length / Math.floor((w - left) / 60)));
+      rows.forEach((r, i) => {
+        const x = left + i * bw + gap / 2, bwid = Math.max(1, bw - gap);
+        el('rect', { x, width: bwid, y: y(r.value), height: h - bottom - y(r.value), fill: color }, svg);
+        if (r.extra) el('rect', { x, width: bwid, y: y(Math.min(r.extra, r.value)), height: h - bottom - y(Math.min(r.extra, r.value)), fill: extraColor }, svg);
+        if (i % labelEvery === 0) el('text', { x: x + bwid / 2, y: h - 6, 'text-anchor': 'middle' }, svg).textContent = r.label;
+        const hit = el('rect', { x: left + i * bw, width: bw, y: 0, height: h - bottom, fill: 'transparent' }, svg);
+        hit.addEventListener('pointermove', (e) => {
+          tip.hidden = false; tip.textContent = r.tip;
+          const b = box.getBoundingClientRect(); let px = e.clientX - b.left + 12;
+          if (px + tip.offsetWidth > b.width) px = e.clientX - b.left - tip.offsetWidth - 12;
+          tip.style.left = Math.max(0, px) + 'px'; tip.style.top = Math.max(0, e.clientY - b.top - 34) + 'px';
+        });
+        hit.addEventListener('pointerleave', () => { tip.hidden = true; });
+      });
+    }
+
+    function list(box, rows) {
+      box.replaceChildren();
+      if (!rows.length) { const p = document.createElement('p'); p.className = 'empty'; p.textContent = 'Nothing yet.'; box.appendChild(p); return; }
+      const max = Math.max(...rows.map((r) => r.value));
+      for (const r of rows) {
+        const row = document.createElement('div'); row.className = 'bar';
+        const name = document.createElement('span'); name.textContent = r.label;
+        const track = document.createElement('span'); track.className = 'track';
+        const fill = document.createElement('span'); fill.className = 'fill'; fill.style.display = 'block'; fill.style.width = (100 * r.value / max) + '%';
+        track.appendChild(fill);
+        const n = document.createElement('span'); n.textContent = fmt.format(r.value);
+        row.append(name, track, n); box.appendChild(row);
+      }
+    }
+
+    let data;
+    function draw() {
+      if (!data) return;
+      const i = data.installs;
+      set('t-ever', fmt.format(i.ever)); set('t-today', fmt.format(i.today)); set('t-week', fmt.format(i.week)); set('t-month', fmt.format(i.month));
+
+      const fresh = Object.fromEntries(data.first_seen.map((r) => [r.day, r]));
+      bars(document.getElementById('c-daily'), data.daily.map((r) => ({
+        label: day(r.day), value: r.active, extra: fresh[r.day]?.fresh ?? 0,
+        tip: `${day(r.day)}: ${fmt.format(r.active)} active, ${fmt.format(fresh[r.day]?.fresh ?? 0)} new, ${fmt.format(fresh[r.day]?.existing ?? 0)} updated and seen first`,
+      })));
+      list(document.getElementById('b-versions'), data.versions.map((r) => ({ label: r.version, value: r.installs })));
+      const edition = (w) => (Number(w.split('.')[2]) >= 22000 ? 'Windows 11' : 'Windows 10');
+      list(document.getElementById('b-windows'), data.windows.map((r) => ({ label: `${edition(r.windows)} (${r.windows.split('.')[2]})`, value: r.installs })));
+
+      const site = data.site_downloads || [];
+      const since = (n) => new Date(Date.now() - n * 86400000).toISOString().slice(0, 10);
+      const sum = (rows, key, from) => rows.filter((r) => r.day >= from).reduce((s, r) => s + r[key], 0);
+      set('s-week', fmt.format(sum(site, 'people', since(6))));
+      set('s-month', fmt.format(sum(site, 'people', since(29))));
+      set('s-clicks', fmt.format(sum(site, 'clicks', since(29))));
+      bars(document.getElementById('c-site'), site.map((r) => ({
+        label: day(r.day), value: r.people, tip: `${day(r.day)}: ${fmt.format(r.people)} people, ${fmt.format(r.clicks)} clicks`,
+      })));
+
+      const rel = [...data.releases].sort((a, b) => a.published.localeCompare(b.published));
+      const total = rel.reduce((s, r) => s + r.downloads, 0);
+      set('d-total', fmt.format(total)); set('d-count', fmt.format(rel.length));
+      const newest = rel[rel.length - 1];
+      set('d-latest', newest ? fmt.format(newest.downloads) : '—');
+      set('d-latest-tag', newest ? `${newest.tag}, ${new Date(newest.published).toLocaleString()}` : '');
+      bars(document.getElementById('c-releases'), rel.slice(-60).map((r) => ({
+        label: day(r.published.slice(0, 10)), value: r.downloads, tip: `${r.tag}: ${fmt.format(r.downloads)} downloads`,
+      })));
+      const tbody = document.getElementById('r-table');
+      tbody.replaceChildren(...rel.slice().reverse().map((r) => {
+        const tr = document.createElement('tr');
+        for (const [v, cls] of [[r.tag], [new Date(r.published).toLocaleString()], [fmt.format(r.downloads), 'num']]) {
+          const td = document.createElement('td'); td.textContent = v; if (cls) td.className = cls; tr.appendChild(td);
+        }
+        return tr;
+      }));
+      set('asof', 'As of ' + new Date(data.as_of).toLocaleString());
+    }
+
+    fetch('api', { cache: 'no-store' })
+      .then((r) => { if (!r.ok) throw new Error(r.status === 403 ? 'Sign in through Cloudflare Access to see the numbers.' : `The numbers didn't load (${r.status}).`); return r.json(); })
+      .then((d) => { data = d; draw(); })
+      .catch((e) => { const p = document.getElementById('error'); p.hidden = false; p.textContent = e.message || "The numbers didn't load."; set('asof', ''); });
+    let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(draw, 150); });
+  </script>
+</body>
+</html>

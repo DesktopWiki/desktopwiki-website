@@ -32,11 +32,16 @@
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+/* The page color sits on html, not body: html paints the whole window, so the area below short pages and the
+   overscroll (rubber-band) area are the theme's color too, instead of the browser's white. */
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);
+  min-height: 100%;
+}
 
 body {
   margin: 0;
-  background: var(--bg);
   color: var(--text);
   font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;

@@ -51,6 +51,8 @@
     .legend { display: flex; gap: 14px; font-size: 0.82rem; color: var(--muted); }
     .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
     .empty { color: var(--muted); font-size: 0.9rem; padding: 8px 0; }
+    td.partial { color: var(--muted); font-style: italic; }
+    .panel .tablewrap { margin-top: 8px; }
     #error { color: #c42b1c; }
     details summary { cursor: pointer; }
     details ul { color: var(--muted); font-size: 0.88rem; max-width: 75ch; }
@@ -83,6 +85,37 @@
       </div>
     </section>
 
+    <section id="retention">
+      <h2>Do people keep using it?</h2>
+      <div class="tiles">
+        <div class="tile"><span class="label">Back in their second week</span><span class="big" id="k-week2">—</span><span class="muted" id="k-week2-of">&nbsp;</span></div>
+        <div class="tile"><span class="label">Still used a month later</span><span class="big" id="k-month">—</span><span class="muted" id="k-month-of">&nbsp;</span></div>
+      </div>
+      <div class="panel">
+        <h2>Installs still in use, by week of first report</h2>
+        <p class="muted">Of the installs first seen that week (weeks start on Monday), the share that reported again in each later week. Faded numbers are still counting.</p>
+        <div class="tablewrap">
+          <table aria-label="Installs still in use, by week of first report">
+            <thead><tr><th>First seen</th><th class="num">Installs</th><th class="num">Week 1</th><th class="num">Week 2</th><th class="num">Week 3</th><th class="num">Week 4</th></tr></thead>
+            <tbody id="k-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="updates">
+      <h2>Updates</h2>
+      <div class="tiles">
+        <div class="tile"><span class="label">Up to date yesterday</span><span class="big" id="u-yesterday">—</span><span class="muted" id="u-yesterday-of">&nbsp;</span></div>
+        <div class="tile"><span class="label">Installer size</span><span class="big" id="u-size">—</span><span class="muted" id="u-size-change">&nbsp;</span></div>
+      </div>
+      <div class="panel">
+        <h2>Installs up to date each day</h2>
+        <p class="muted">Share of that day's installs running the newest release published before the day began (UTC), or a newer one.</p>
+        <div class="chart" id="c-uptodate"></div>
+      </div>
+    </section>
+
     <section id="site">
       <h2>Downloads from the website</h2>
       <div class="tiles">
@@ -111,7 +144,7 @@
       </div>
       <div class="tablewrap">
         <table aria-label="Releases and their downloads">
-          <thead><tr><th>Release</th><th>Published</th><th class="num">Downloads</th></tr></thead>
+          <thead><tr><th>Release</th><th>Published</th><th class="num">Installer size</th><th class="num">Downloads</th><th class="num" title="Share of installs on this release or newer, the day after it was published">On it, day after</th><th class="num" title="3 days after it was published">3 days after</th><th class="num" title="7 days after it was published">A week after</th></tr></thead>
           <tbody id="r-table"></tbody>
         </table>
       </div>
@@ -124,6 +157,9 @@
         <li>"New installs" are installs whose first report was their first ever launch. Until the app release after 26.11.1002, an older install that updated is counted as new too.</li>
         <li>Website downloads count each person once a day: a one-way scramble of their IP address and browser with a secret that changes daily, so people can't be told apart across days and no IP address is kept. They start on 2026-11-10.</li>
         <li>Downloads are GitHub's counts for each release's DesktopWiki.msi: the website's Download button, the app's updater and your own installs. They can't tell people apart.</li>
+        <li>Retention counts from each install's first report. "Back in their second week" is installs that reported again 7 to 13 days after it; "a month later", 28 to 34 days after. Only installs first seen long enough ago are counted. Installs that updated from a version without reports count from the day they first reported.</li>
+        <li>An install reports once a day, when it starts, so "up to date" and the "On it" columns use the version each install ran when it first started that day (or last restarted). "On it" means this release or a newer one, as the share of installs that reported that day. Columns are empty until that day has ended, and for days before reports began.</li>
+        <li>Installer size is the size of each release's DesktopWiki.msi on GitHub (1 MB = 1,048,576 bytes, as Windows shows it).</li>
       </ul>
     </details>
   </div>
@@ -136,12 +172,12 @@
     const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
 
     // A bar chart: rows of {key, label, value, extra?, tip}; drawn to the box's width, with a tooltip.
-    function bars(box, rows, { color = 'var(--accent)', extraColor = 'var(--accent-2)', height = 200 } = {}) {
+    function bars(box, rows, { color = 'var(--accent)', extraColor = 'var(--accent-2)', height = 200, top: ceiling } = {}) {
       box.replaceChildren();
       if (!rows.length) { const p = document.createElement('p'); p.className = 'empty'; p.textContent = 'Nothing yet.'; box.appendChild(p); return; }
       const w = Math.max(280, box.clientWidth), h = height, left = 36, bottom = 22, top = 8;
       const max = Math.max(1, ...rows.map((r) => r.value));
-      const step = Math.pow(10, Math.floor(Math.log10(max))); const nice = Math.ceil(max / step) * step;
+      const step = Math.pow(10, Math.floor(Math.log10(max))); const nice = ceiling || Math.ceil(max / step) * step;
       const y = (v) => h - bottom - (v / nice) * (h - bottom - top);
       const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, role: 'img' }, box);
       for (let i = 0; i <= 4; i++) {
@@ -183,9 +219,46 @@
       }
     }
 
+    const pct = (n, all) => (all ? Math.round(100 * n / all) + '%' : '—');
+    const mb = (b) => (b == null ? '—' : (b / 1048576).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' MB');
+    const addDays = (d, n) => new Date(Date.parse(d + 'T00:00:00Z') + n * 86400000).toISOString().slice(0, 10);
+    // Compares versions or tags ("v26.11.1517") part by part, as numbers.
+    const cmpVer = (a, b) => {
+      const x = a.replace(/^v/, '').split('.').map(Number), y = b.replace(/^v/, '').split('.').map(Number);
+      for (let i = 0; i < Math.max(x.length, y.length); i++) { const d = (x[i] || 0) - (y[i] || 0); if (d) return d; }
+      return 0;
+    };
+    // A table row from cells of [text, class?, title?].
+    const row = (cells) => {
+      const tr = document.createElement('tr');
+      for (const [v, cls, title] of cells) {
+        const td = document.createElement('td'); td.textContent = v;
+        if (cls) td.className = cls; if (title) td.title = title;
+        tr.appendChild(td);
+      }
+      return tr;
+    };
+
+    // Each release's DesktopWiki.msi downloads and size, as the Worker's /api gives them.
+    async function githubReleases() {
+      const releases = [];
+      for (let page = 1; page <= 5; page++) {
+        const res = await fetch(`https://api.github.com/repos/DesktopWiki/desktopwiki-releases/releases?per_page=100&page=${page}`, { headers: { Accept: 'application/vnd.github+json' } });
+        if (!res.ok) break;
+        const list = await res.json();
+        for (const x of list) {
+          const msi = x.assets.filter((a) => a.name.endsWith('.msi'));
+          releases.push({ tag: x.tag_name, published: x.published_at, downloads: msi.reduce((s, a) => s + a.download_count, 0), size: msi.length ? msi[0].size : null });
+        }
+        if (list.length < 100) break;
+      }
+      return releases;
+    }
+
     let data;
     function draw() {
       if (!data) return;
+      const today = new Date().toISOString().slice(0, 10);
       const i = data.installs;
       set('t-ever', fmt.format(i.ever)); set('t-today', fmt.format(i.today)); set('t-week', fmt.format(i.week)); set('t-month', fmt.format(i.month));
 
@@ -217,20 +290,81 @@
       bars(document.getElementById('c-releases'), rel.slice(-60).map((r) => ({
         label: day(r.published.slice(0, 10)), value: r.downloads, tip: `${r.tag}: ${fmt.format(r.downloads)} downloads`,
       })));
+      // Retention.
+      const k = data.retention || {};
+      const keptTile = (id, r, when) => {
+        set(id, r && r.base ? pct(r.kept, r.base) : '—');
+        set(id + '-of', r && r.base ? `${fmt.format(r.kept)} of ${fmt.format(r.base)} installs first seen ${when}` : 'Not enough data yet');
+      };
+      keptTile('k-week2', k.week2, '2+ weeks ago');
+      keptTile('k-month', k.month, '5+ weeks ago');
+      const cohorts = {};
+      for (const r of k.cohorts || []) (cohorts[r.week] ||= {})[r.wk] = r.installs;
+      const ktable = document.getElementById('k-table');
+      const weeks = Object.keys(cohorts).sort().reverse();
+      ktable.replaceChildren(...(weeks.length ? weeks.map((w) => {
+        const c = cohorts[w], cells = [[day(w)], [fmt.format(c[0] || 0), 'num']];
+        for (let n = 1; n <= 4; n++) {
+          if (addDays(w, 7 * n) > today) { cells.push(['', 'num']); continue; }
+          const done = addDays(w, 7 * n + 12) < today;
+          cells.push([pct(c[n] || 0, c[0]), done ? 'num' : 'num partial', `${fmt.format(c[n] || 0)} of ${fmt.format(c[0] || 0)}${done ? '' : ', still counting'}`]);
+        }
+        return row(cells);
+      }) : [row([['Nothing yet.']])]));
+
+      // Updates: the share of a day's installs on a release or newer.
+      const byDay = {};
+      for (const r of data.versions_daily || []) (byDay[r.day] ||= []).push(r);
+      const onIt = (d, tag) => {
+        if (d >= today || !byDay[d]) return null;
+        let n = 0, all = 0;
+        for (const r of byDay[d]) { all += r.installs; if (cmpVer(r.version, tag) >= 0) n += r.installs; }
+        return { n, all };
+      };
+      const newestBefore = (d) => { const t = Date.parse(d + 'T00:00:00Z'); let best; for (const r of rel) if (Date.parse(r.published) < t) best = r; return best; };
+      const upToDate = Object.keys(byDay).sort().filter((d) => d < today && newestBefore(d)).map((d) => {
+        const r = newestBefore(d), s = onIt(d, r.tag);
+        return { d, r, s, value: Math.round(100 * s.n / s.all) };
+      });
+      bars(document.getElementById('c-uptodate'), upToDate.map((u) => ({
+        label: day(u.d), value: u.value, tip: `${day(u.d)}: ${u.value}% on ${u.r.tag} or newer (${fmt.format(u.s.n)} of ${fmt.format(u.s.all)})`,
+      })), { top: 100 });
+      const last = upToDate.find((u) => u.d === addDays(today, -1));
+      set('u-yesterday', last ? last.value + '%' : '—');
+      set('u-yesterday-of', last ? `${fmt.format(last.s.n)} of ${fmt.format(last.s.all)} on ${last.r.tag} or newer` : 'No reports yesterday');
+
+      // Installer size: the newest, and how it changed.
+      const sized = rel.filter((r) => r.size);
+      const big = sized[sized.length - 1], prev = sized[sized.length - 2];
+      const monthAgo = sized.filter((r) => Date.parse(r.published) <= Date.now() - 30 * 86400000).pop();
+      const change = (a, b, what) => {
+        const d = (a.size - b.size) / 1048576;
+        if (Math.abs(d) < 0.05) return `Same size as ${what}`;
+        return (d > 0 ? '+' : '−') + Math.abs(d).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ` MB since ${what}`;
+      };
+      set('u-size', big ? mb(big.size) : '—');
+      set('u-size-change', !big ? '' : [prev && change(big, prev, prev.tag), monthAgo && change(big, monthAgo, `${monthAgo.tag}, 30 days ago`)].filter(Boolean).join('; ') || big.tag);
+
       const tbody = document.getElementById('r-table');
       tbody.replaceChildren(...rel.slice().reverse().map((r) => {
-        const tr = document.createElement('tr');
-        for (const [v, cls] of [[r.tag], [new Date(r.published).toLocaleString()], [fmt.format(r.downloads), 'num']]) {
-          const td = document.createElement('td'); td.textContent = v; if (cls) td.className = cls; tr.appendChild(td);
+        const cells = [[r.tag], [new Date(r.published).toLocaleString()], [mb(r.size), 'num'], [fmt.format(r.downloads), 'num']];
+        for (const n of [1, 3, 7]) {
+          const s = onIt(addDays(r.published.slice(0, 10), n), r.tag);
+          cells.push(s ? [pct(s.n, s.all), 'num', `${fmt.format(s.n)} of ${fmt.format(s.all)} installs`] : ['', 'num']);
         }
-        return tr;
+        return row(cells);
       }));
       set('asof', 'As of ' + new Date(data.as_of).toLocaleString());
     }
 
     fetch('api', { cache: 'no-store' })
       .then((r) => { if (!r.ok) throw new Error(r.status === 403 ? 'Sign in through Cloudflare Access to see the numbers.' : `The numbers didn't load (${r.status}).`); return r.json(); })
-      .then((d) => { data = d; draw(); })
+      .then(async (d) => {
+        // GitHub often refuses the Worker (it limits requests from Cloudflare's shared addresses); then this browser
+        // asks GitHub itself.
+        if (!d.releases || !d.releases.length) d.releases = await githubReleases().catch(() => []);
+        data = d; draw();
+      })
       .catch((e) => { const p = document.getElementById('error'); p.hidden = false; p.textContent = e.message || "The numbers didn't load."; set('asof', ''); });
     let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(draw, 150); });
   </script>

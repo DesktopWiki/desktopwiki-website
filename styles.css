@@ -34,10 +34,14 @@
 
 * { box-sizing: border-box; }
 
-/* Past the end of the page (below short pages, overscroll): white in light mode, black in dark mode. */
+/* Past the end of the page (below short pages, overscroll): white in light mode, black in dark mode.
+   :root and !important because the Dark Reader extension (Filter and Static modes) adds
+   "html { background: white !important }", which made it white there in dark mode; :root outranks html. */
 html {
   -webkit-text-size-adjust: 100%;
-  background: var(--page-end);
+}
+:root {
+  background: var(--page-end) !important;
 }
 
 body {

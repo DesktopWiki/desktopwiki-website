@@ -19,6 +19,8 @@
     }
     * { box-sizing: border-box; }
     html, body { background: var(--bg); color: var(--text); margin: 0; }
+    /* :root and !important outrank the Dark Reader extension's "html { background: white !important }". */
+    :root { background: var(--bg) !important; }
     body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; font-size: 15px; line-height: 1.45; }
     .wrap { max-width: 1040px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-left)) 48px; display: flex; flex-direction: column; gap: 28px; }
     header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; }

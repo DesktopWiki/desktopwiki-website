@@ -13,6 +13,7 @@
   --accent: #f2a93b;
   --bookmark: #e05a3a;
   --code-bg: #efece4;
+  --page-end: #ffffff;
   color-scheme: light;
 }
 
@@ -27,12 +28,17 @@
   --hero-text: #ffffff;
   --hero-muted: #c3c9e6;
   --code-bg: #262a3d;
+  --page-end: #000000;
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+/* Past the end of the page (below short pages, overscroll): white in light mode, black in dark mode. */
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--page-end);
+}
 
 body {
   margin: 0;

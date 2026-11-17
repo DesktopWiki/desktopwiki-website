@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DesktopWiki</title>
-  <meta name="description" content="A wiki for your home or small team that runs from one Windows program on your own PC, with everything stored in one file.">
+  <meta name="description" content="A wiki and a password manager for your home or small team that run from one Windows program on your own PC, with everything stored in one file.">
   <link rel="icon" type="image/png" href="dw-book.png">
   <link rel="apple-touch-icon" href="dw-book.png">
   <link rel="stylesheet" href="styles.css">
@@ -35,17 +35,18 @@
       </div>
 
       <h1>A wiki for your family or small team, running on your own PC.</h1>
-      <p class="lede">DesktopWiki gives you spaces, a page tree and a familiar visual editor, the way classic team wikis worked. It's one Windows program: start it, and anyone on your home or office network can read and edit pages from a browser or phone.</p>
+      <p class="lede">DesktopWiki gives you spaces, a page tree and a familiar visual editor, the way classic team wikis worked, plus a password manager for everyone's logins. It's one Windows program: start it, and anyone on your home or office network can read and edit pages from a browser or phone.</p>
 
       <div class="actions">
         <a class="button" href="download.html">Download the free beta</a>
         <a href="#features">What it does</a>
+        <a href="#vaults">Passwords</a>
         <a href="#how">How it runs</a>
         <a href="#requirements">Requirements</a>
         <a href="#roadmap">What's next</a>
       </div>
 
-      <p class="demo-note"><strong>Look around first:</strong> open the demo wiki from setup or the tray icon. It's the Morgan family's wiki, with their spaces, pages, pictures and files, and you can view it as each of them.</p>
+      <p class="demo-note"><strong>Look around first:</strong> open the demo wiki from setup or the tray icon. It's the Morgan family's wiki, with their spaces, pages, pictures, files and password vaults, and you can view it as each of them.</p>
       <p class="fine">For Windows 10 (version 1809 or later) and Windows 11, 64-bit. No server, no database to install and no cloud account. Your wiki lives in a single file you can back up by copying it.</p>
     </div>
   </header>
@@ -102,7 +103,7 @@
         </article>
         <article class="card">
           <h3>Bring your old wiki</h3>
-          <p>Import a Confluence space export or a whole-site backup, every space at once: pages, blog posts, attachments, comments, labels, templates, profile pictures, authors and dates, with as many earlier versions as you choose. Layouts, panels and macros come across, and links between the spaces are kept. Anything that can't be converted is kept as a marked placeholder, never dropped.</p>
+          <p>Import a Confluence space export or a whole-site backup, every space at once: pages, blog posts, attachments, comments, labels, templates, profile pictures, authors and dates, with as many earlier versions as you choose. Layouts, panels and macros come across, and links between the spaces are kept. Anything that can't be converted is kept as a marked placeholder, never dropped. Try it for a few days, then import again: each space replaces the one that came in before, or erase the wiki's spaces and start over.</p>
         </article>
         <article class="card">
           <h3>Search everything</h3>
@@ -131,6 +132,50 @@
       </div>
     </section>
 
+    <section id="vaults">
+      <h2>A password manager for everyone</h2>
+      <p class="section-lede">Vaults keep each person's logins, cards, documents and two-step codes, and the ones the family shares. Everything is encrypted in your browser before it reaches the wiki's PC, which never holds it in a form it can read.</p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Your own vault, and shared ones</h3>
+          <p>Everyone gets a Private vault. Shared vaults, such as Family or Streaming, go to the people and groups you choose, each to view, edit or manage. Add a guest, such as a babysitter, who sees only the one vault you share with them and nothing else in the wiki.</p>
+        </article>
+        <article class="card">
+          <h3>Encrypted where you type</h3>
+          <p>Items are locked with your vault password and a Secret Key that stays on your devices (AES-256 and Argon2id). The wiki's PC and its backups only ever hold scrambled data. Your Emergency Kit keeps what you need to get back in.</p>
+        </article>
+        <article class="card">
+          <h3>Everything worth keeping safe</h3>
+          <p>Logins, credit cards, bank accounts, passports, Wi-Fi, software licenses and more than a dozen other kinds, with tags, favorites, a password generator and attached documents. Earlier versions and old passwords are kept, and a Wi-Fi item shows a QR code a phone can join with.</p>
+        </article>
+        <article class="card">
+          <h3>Two-step codes built in</h3>
+          <p>Keep a site's one-time codes with its login and see each code with the seconds it has left. Scan the site's QR code from a screenshot, your screen or a phone's camera, or from the tray icon in one click, and move your codes over from Google Authenticator.</p>
+        </article>
+        <article class="card">
+          <h3>Password health</h3>
+          <p>See which passwords are weak, reused or found in a data breach, which sites offer two-step sign-in you haven't set up, and what's about to expire. The breach check sends only the first five characters of a scrambled form of each password, and an admin can turn it off.</p>
+        </article>
+        <article class="card">
+          <h3>Quick Access from the tray</h3>
+          <p>Press Ctrl+Shift+Space anywhere in Windows, find a login and press Enter to copy its password. Unlock it with Windows Hello. What you copy stays out of Windows' clipboard history and is cleared after 90 seconds.</p>
+        </article>
+        <article class="card">
+          <h3>Passkeys, and help when you forget</h3>
+          <p>In a browser, unlock with a passkey on your iPhone, Android phone or security key instead of typing the vault password. Forgot it anyway? If you allowed it, an admin can help you back in with a new vault password.</p>
+        </article>
+        <article class="card">
+          <h3>Bring your passwords</h3>
+          <p>Import from 1Password, Bitwarden, LastPass, KeePass, KeePassXC, Dashlane, Chrome, Edge and Firefox. Files are read and encrypted in your browser, so plain passwords never reach the wiki. Export to a file whenever you like.</p>
+        </article>
+        <article class="card">
+          <h3>Share by link</h3>
+          <p>Send someone a copy of an item with a link that lasts from an hour to 30 days, or for one view, for anyone or only people who sign in to the wiki. The wiki can't read the copy: its key is only in the link. Each vault shows who added, changed, shared or copied what.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="yours">
       <h2>Safe, and made yours</h2>
       <p class="section-lede">Everything stays on your PC, locked down the way you want, in your colors and your language.</p>
@@ -143,10 +188,6 @@
         <article class="card">
           <h3>Two-step sign-in</h3>
           <p>Sign in with your password and a code from an authenticator app on your phone, with recovery codes for when you can't reach it. Admins can require it for everyone, and the tray icon can ask for an admin's code before anyone changes how the wiki runs.</p>
-        </article>
-        <article class="card">
-          <h3>Password pages</h3>
-          <p>Keep the family's Wi-Fi, router and account passwords on a page that's encrypted in the browser with a vault password only its people know. Even the wiki's PC can't read it.</p>
         </article>
         <article class="card">
           <h3>Encrypted backups</h3>
@@ -166,7 +207,7 @@
         </article>
         <article class="card">
           <h3>AI agents</h3>
-          <p>Connect an AI app such as Claude Code with a key of your own, and it can find, gather and sum up what's in the wiki for you. It sees only what you can see, never password pages or the spaces you keep from it, and any change it suggests waits for you to apply or decline.</p>
+          <p>Connect an AI app such as Claude Code with a key of your own, and it can find, gather and sum up what's in the wiki for you. It sees only what you can see, never your vaults or the spaces you keep from it, and any change it suggests waits for you to apply or decline.</p>
         </article>
       </div>
     </section>
@@ -237,7 +278,7 @@
       <span class="footer-note">Also from EmuKey: <a href="https://inclosemail.com/">InCloseMail</a></span>
     </div>
     <div class="wrap">
-      <p class="legal">DesktopWiki is made by EmuKey LLC. It is not made by, endorsed by or affiliated with Atlassian. Confluence is a trademark of Atlassian. Claude is a trademark of Anthropic. Windows is a trademark of the Microsoft group of companies.</p>
+      <p class="legal">DesktopWiki is made by EmuKey LLC. It is not made by, endorsed by or affiliated with Atlassian. Confluence is a trademark of Atlassian. Claude is a trademark of Anthropic. Windows is a trademark of the Microsoft group of companies. Other product names on this page are trademarks of their owners.</p>
     </div>
   </footer>
   <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->

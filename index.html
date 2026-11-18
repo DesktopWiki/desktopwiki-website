@@ -42,8 +42,8 @@
         <a href="#features">What it does</a>
         <a href="#vaults">Passwords</a>
         <a href="#how">How it runs</a>
+        <a href="#away">Away from home</a>
         <a href="#requirements">Requirements</a>
-        <a href="#roadmap">What's next</a>
       </div>
 
       <p class="demo-note"><strong>Look around first:</strong> open the demo wiki from setup or the tray icon. It's the Morgan family's wiki, with their spaces, pages, pictures, files and password vaults, and you can view it as each of them.</p>
@@ -238,6 +238,38 @@
       </div>
     </section>
 
+    <section id="away">
+      <h2>Away from home</h2>
+      <p class="section-lede">Open the wiki from your phone at work or on vacation, one of two ways. Both are off until an admin turns them on at the wiki's PC, both use your free desktopwiki.net address so there are no certificate warnings, and each says plainly what it opens up.</p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>A private network app (the safe way)</h3>
+          <p>Install Tailscale, free for personal use, on the wiki's PC and on each phone or laptop. The wiki gets an away address, with a QR code, that works only on devices signed in to your Tailscale network, at home or anywhere. <strong>What it opens up: nothing.</strong> Nothing on the internet can reach the wiki, not even its sign-in page.</p>
+        </article>
+        <article class="card">
+          <h3>Open to the internet (no app needed)</h3>
+          <p>The wiki asks your router to forward its port (UPnP or NAT-PMP), or shows the steps to do it yourself, and gets a public address that follows your home's address when it changes. <strong>What it opens up:</strong> the wiki's sign-in page, on its one port, to anyone on the internet, and your home's internet address becomes public in DNS.</p>
+        </article>
+        <article class="card">
+          <h3>Locked down from outside</h3>
+          <p>From outside your home, only people with two-step sign-in can sign in. An address that gets 10 passwords or codes wrong in an hour is locked out for the next hour. AI agents, setup and the certificate page answer only at home.</p>
+        </article>
+        <article class="card">
+          <h3>Checked from the internet</h3>
+          <p>DesktopWiki has its names service try to reach the wiki from outside and tells you what it found: it works, the port is closed (with router steps), or your connection shares one internet address with others, as many fiber, Starlink and mobile connections do. Then only the private network app works, and it says so.</p>
+        </article>
+        <article class="card">
+          <h3>You see who came in</h3>
+          <p>Each person's activity shows sign-ins from outside the home with their address, and a right password with a wrong code, which can mean someone else knows it. The tray icon says when the wiki is open to the internet.</p>
+        </article>
+        <article class="card">
+          <h3>Closed in one click</h3>
+          <p>Turning either way off removes its address at once, along with the forwarding the wiki asked your router for. A rule you made on the router yourself stays until you remove it there.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="requirements">
       <h2>Requirements</h2>
       <p class="section-lede">DesktopWiki runs on one Windows PC. Everyone else just needs a browser.</p>
@@ -252,21 +284,13 @@
         </div>
         <div>
           <h3>Your network</h3>
-          <p>Other devices on the same home or office network reach it on port 8090 (you can change it). Windows must treat that network as Private, not Public. The PC needs to be on and awake while people use the wiki.</p>
+          <p>Other devices on the same home or office network reach it on port 8090 (you can change it). Windows must treat that network as Private, not Public. The PC needs to be on and awake while people use the wiki, from home or <a href="#away">away</a>.</p>
         </div>
         <div>
           <h3>Phones, tablets and other PCs</h3>
           <p>A current Edge, Chrome, Firefox or Safari, on Windows, Mac, iPhone, iPad or Android. Nothing to install on them.</p>
         </div>
       </div>
-    </section>
-
-    <section id="roadmap">
-      <h2>What's next</h2>
-      <p class="section-lede">The beta covers everything above. This is planned next:</p>
-      <ul class="checklist">
-        <li><strong>Away from home.</strong> Optional secure remote access to your wiki from outside your network.</li>
-      </ul>
     </section>
 
     <section id="download">

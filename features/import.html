@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Import from Confluence - DesktopWiki</title>
+  <meta name="description" content="Bring a Confluence space export or a whole-site backup into DesktopWiki: pages, pictures, attachments, history and all.">
+  <link rel="icon" type="image/png" href="../dw-book.png">
+  <link rel="apple-touch-icon" href="../dw-book.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="../theme.js" defer></script>
+</head>
+<body>
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../">
+          <img src="../dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <p class="crumb"><a href="../#features">Features</a> &rsaquo; Import from Confluence</p>
+      <h1>Bring your old wiki</h1>
+      <p class="lede lede-under">Moving off a Confluence server? Import a space export or the whole site&rsquo;s backup, and your pages come across looking the way they did, pictures and all.</p>
+    </div>
+  </header>
+
+  <main class="wrap feature-page">
+    <nav class="feature-nav" aria-label="Feature pages">
+        <a href="wiki.html">The wiki</a>
+        <a href="import.html" aria-current="page">Import from Confluence</a>
+        <a href="homepage.html">Your homepage</a>
+        <a href="passwords.html">Passwords</a>
+    </nav>
+
+    <figure class="shot">
+      <a class="shot-light" href="img/import-page-light.png"><img src="img/import-page-light.png" width="1920" height="1200" alt="The page Backyard deck after the import, in the Projects space: a two-column layout with an info panel, a table of steps with @mentions and colored status labels, a checklist and labels on the left, and a drawn deck plan, a picture of the framing and a tip panel on the right."></a>
+      <a class="shot-dark" href="img/import-page-dark.png"><img src="img/import-page-dark.png" width="1920" height="1200" loading="lazy" alt="The page Backyard deck after the import, in the Projects space: a two-column layout with an info panel, a table of steps with @mentions and colored status labels, a checklist and labels on the left, and a drawn deck plan, a picture of the framing and a tip panel on the right. In dark mode."></a>
+      <figcaption>A page from the Whitfields&rsquo; Confluence, just after the import: the layout, panels, status labels, mentions, checklist, labels and pictures came across as they were. The Whitfields are made up, and so is their wiki. The picture follows this page&rsquo;s light or dark mode; click it to see it full size.</figcaption>
+    </figure>
+
+    <section class="feature-list">
+        <div class="feature-item" id="a-space-or-the-whole-site">
+          <h3>A space, or the whole site</h3>
+          <p>Import a Confluence space export or a whole-site backup, every space at once. Before anything comes in, DesktopWiki reads the export and shows each space with its pages, files, comments and earlier versions; check the ones you want and give each a name and a key.</p>
+        </div>
+        <div class="feature-item" id="what-comes-across">
+          <h3>What comes across</h3>
+          <p>Pages and blog posts, attachments and their earlier versions, comments, labels, templates, profile pictures, and who wrote what and when, with as many earlier versions of each page as you choose.</p>
+        </div>
+        <div class="feature-item" id="pages-that-look-the-same">
+          <h3>Pages that look the same</h3>
+          <p>Layouts, panels and macros come across: columns and sidebars, info, tip and warning panels, status labels, @mentions, checklists, pictures sized as they were and the lists of pages under a page. Anything that can't be converted is kept as a marked placeholder, never dropped.</p>
+        </div>
+        <div class="feature-item" id="links-keep-working">
+          <h3>Links keep working</h3>
+          <p>Spaces imported together are imported all at once, so links from one space to another still lead where they did.</p>
+        </div>
+        <div class="feature-item" id="try-it-then-import-again">
+          <h3>Try it, then import again</h3>
+          <p>Try DesktopWiki for a few days, then import again: each space replaces the one that came in before, or erase the wiki's spaces and start over.</p>
+        </div>
+    </section>
+
+    <figure class="shot">
+      <a class="shot-light" href="img/import-choose-light.png"><img src="img/import-choose-light.png" width="1920" height="1200" loading="lazy" alt="Configuration, Confluence Import, after reading the Whitfields' site backup: it has 5 spaces, each checked, with its pages, files, comments and earlier versions counted, and a name and space key for the new space."></a>
+      <a class="shot-dark" href="img/import-choose-dark.png"><img src="img/import-choose-dark.png" width="1920" height="1200" loading="lazy" alt="Configuration, Confluence Import, after reading the Whitfields' site backup: it has 5 spaces, each checked, with its pages, files, comments and earlier versions counted, and a name and space key for the new space. In dark mode."></a>
+      <figcaption>Before the import: the export read, its five spaces counted and checked.</figcaption>
+    </figure>
+
+    <section class="feature-cta">
+      <h2>Try it with the Whitfields&rsquo; wiki</h2>
+      <p>No Confluence to hand? <a href="whitfield-confluence-example.zip" download>Download the Whitfields&rsquo; site backup</a> (a .zip of 370 KB, made up for this page), then <a href="../download.html">download the free beta</a> and import it from Configuration &rarr; Confluence Import. See <a href="../pricing.html">pricing</a> for after the beta, or go back to <a href="../#features">all the features</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="../privacy.html">Privacy</a></nav>
+      <span class="footer-note">Also from EmuKey: <a href="https://inclosemail.com/">InCloseMail</a></span>
+    </div>
+    <div class="wrap">
+      <p class="legal">DesktopWiki is made by EmuKey LLC. It is not made by, endorsed by or affiliated with Atlassian. Confluence is a trademark of Atlassian. Claude is a trademark of Anthropic. Windows is a trademark of the Microsoft group of companies. Other product names on this page are trademarks of their owners.</p>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing - DesktopWiki</title>
+  <meta name="description" content="DesktopWiki is free for one person. Family, Team and Business are one yearly price for the whole wiki, not per person, and your data stays on your PC.">
+  <link rel="icon" type="image/png" href="dw-book.png">
+  <link rel="apple-touch-icon" href="dw-book.png">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="./">
+          <img src="dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <h1>Pricing</h1>
+      <p class="lede lede-under">One yearly price for the whole wiki, not per person. Every plan has every feature, and your wiki stays on your PC.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="beta-note"><strong>Free during the beta.</strong> DesktopWiki costs nothing until the beta ends on December 31, 2026. Everyone who ran the beta gets their <strong>first year of Family free</strong> after that. <a href="download.html">Download the free beta</a></p>
+
+    <section id="plans" class="tiers-section" aria-label="Plans">
+      <div class="tiers">
+        <article class="tier">
+          <h2>Free</h2>
+          <p class="tier-people">1 person</p>
+          <p class="tier-price">$0</p>
+          <p class="tier-per">Every feature, every update</p>
+          <p class="tier-note">Inviting a second person is the step to Family.</p>
+          <a class="button button-quiet" href="download.html">Download</a>
+        </article>
+
+        <article class="tier">
+          <h2>Family</h2>
+          <p class="tier-people">Up to 6 people</p>
+          <p class="tier-price">$49<span>/year</span></p>
+          <p class="tier-per">$8.17 a person</p>
+          <p class="tier-note">Or <strong>$129 once</strong>, with a year of updates. Then $39 a year if you want to keep getting them.</p>
+          <span class="button button-soon" aria-disabled="true">On sale after the beta</span>
+        </article>
+
+        <article class="tier">
+          <h2>Team</h2>
+          <p class="tier-people">Up to 18 people</p>
+          <p class="tier-price">$99<span>/year</span></p>
+          <p class="tier-per">$5.50 a person <span class="save">33% less</span></p>
+          <p class="tier-note">Twice the price of Family, three times the people.</p>
+          <span class="button button-soon" aria-disabled="true">On sale after the beta</span>
+        </article>
+
+        <article class="tier">
+          <h2>Business</h2>
+          <p class="tier-people">Up to 60 people</p>
+          <p class="tier-price">$199<span>/year</span></p>
+          <p class="tier-per">$3.32 a person <span class="save">40% less</span></p>
+          <p class="tier-note">Twice the price of Team, three times the people.</p>
+          <span class="button button-soon" aria-disabled="true">On sale after the beta</span>
+        </article>
+      </div>
+      <p class="tiers-fine">The price a person is with the plan full; &ldquo;less&rdquo; compares it with the plan before. Prices are in US dollars; checkout shows yours in your currency, with any sales tax or VAT. <strong>More than 60 people?</strong> <a href="mailto:support@desktopwiki.com">Write to us</a> and we&rsquo;ll make you a license for as many as you need.</p>
+    </section>
+
+    <section id="included">
+      <h2>Every plan has everything</h2>
+      <p class="section-lede">Plans differ only in how many people can sign in. Nothing is held back for a higher plan.</p>
+      <div class="split">
+        <div>
+          <h3>The whole wiki</h3>
+          <p>Spaces, the page tree and the visual editor, history, attachments, search, blogs, templates, comments and notifications, the Confluence import, and everyone&rsquo;s own homepage.</p>
+        </div>
+        <div>
+          <h3>Password vaults</h3>
+          <p>Private and shared vaults, encrypted in the browser, with two-step codes, password health, Quick Access from the tray and imports from the password manager you use now.</p>
+        </div>
+        <div>
+          <h3>A desktopwiki.net address</h3>
+          <p>Free HTTPS with no certificate warnings on any device, and the away-from-home address when you turn it on.</p>
+        </div>
+        <div>
+          <h3>Updates</h3>
+          <p>New versions as they come out, installed from the tray or by themselves at night.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="questions">
+      <h2>Questions</h2>
+      <div class="split">
+        <div>
+          <h3>What am I paying for, if it runs on my PC?</h3>
+          <p>Updates, the desktopwiki.net names service and its certificates, and support. Your data never comes to us: we don&rsquo;t host wikis, and nothing you pay for gives us a copy.</p>
+        </div>
+        <div>
+          <h3>What happens if I stop paying?</h3>
+          <p>You keep your wiki. When a yearly plan ends, the wiki becomes <strong>read-only</strong>: everyone can still read, search, print and export everything. Updates and the desktopwiki.net address stop. Renew and it&rsquo;s back to normal at once. We never lock you out of your data.</p>
+        </div>
+        <div>
+          <h3>And if I paid once for Family?</h3>
+          <p>It keeps working, fully, for as long as you like. After its year of updates you just don&rsquo;t get new versions, until you add a year for $39.</p>
+        </div>
+        <div>
+          <h3>Who counts as a person?</h3>
+          <p>Every account that can sign in, guests too. Disabled accounts don&rsquo;t count. If you outgrow your plan, nobody is removed: you just can&rsquo;t add another person until you move up.</p>
+        </div>
+        <div>
+          <h3>Why yearly, not monthly?</h3>
+          <p>On small amounts, monthly billing loses much of the price to card fees. Yearly keeps it low, and adding a person never costs more.</p>
+        </div>
+        <div>
+          <h3>Does it need the internet to check my license?</h3>
+          <p>No. Your license is a small signed file kept in the wiki, checked on the PC, so the wiki works offline.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="privacy.html">Privacy</a></nav>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>

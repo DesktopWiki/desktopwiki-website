@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your homepage - DesktopWiki</title>
+  <meta name="description" content="Your own start page, with your links, a search box and pictures for the season.">
+  <link rel="icon" type="image/png" href="../dw-book.png">
+  <link rel="apple-touch-icon" href="../dw-book.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="../theme.js" defer></script>
+</head>
+<body>
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../">
+          <img src="../dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <p class="crumb"><a href="../#homepage">Features</a> &rsaquo; Your homepage</p>
+      <h1>Your own homepage</h1>
+      <p class="lede lede-under">Remember making your own start page, back when every browser opened to one? Everyone in the wiki gets one again: their favorite sites in one place, a search box ready to type in, and pictures that change with the holidays. Make it your browser's start page, at an address such as <code>/start</code>.</p>
+    </div>
+  </header>
+
+  <main class="wrap feature-page">
+    <nav class="feature-nav" aria-label="Feature pages">
+        <a href="wiki.html">The wiki</a>
+        <a href="homepage.html" aria-current="page">Your homepage</a>
+        <a href="passwords.html">Passwords</a>
+    </nav>
+
+    <figure class="shot">
+      <a class="shot-light" href="img/homepage-light.png"><img src="img/homepage-light.png" width="1920" height="1200" alt="Morgan home base, a homepage: a banner with Thanksgiving pictures beside it, a Google search box, the This wiki row, link sections such as Around the house, the weather at home with the week ahead and a Coming up countdown."></a>
+      <a class="shot-dark" href="img/homepage-dark.png"><img src="img/homepage-dark.png" width="1920" height="1200" loading="lazy" alt="Morgan home base, a homepage: a banner with Thanksgiving pictures beside it, a Google search box, the This wiki row, link sections such as Around the house, the weather at home with the week ahead and a Coming up countdown. In dark mode."></a>
+      <figcaption>From the demo wiki, the Morgan family&rsquo;s. The picture follows this page&rsquo;s light or dark mode; click it to see it full size.</figcaption>
+    </figure>
+
+    <section class="feature-list">
+        <div class="feature-item" id="your-links-your-way">
+          <h3>Your links, your way</h3>
+          <p>Sections of links, each group with a short tag in front, in the style you like: a compact grid, a classic 2003 portal, columns of boxes or colored tiles. Drag things where they belong, or start from a list of popular sites.</p>
+        </div>
+        <div class="feature-item" id="bring-the-start-page-you-have">
+          <h3>Bring the start page you have</h3>
+          <p>Import your browser's exported bookmarks, or the start page you made yourself years ago: each heading becomes a section and its links come along. Nothing is saved until you say so.</p>
+        </div>
+        <div class="feature-item" id="a-banner-for-every-season">
+          <h3>A banner for every season</h3>
+          <p>Put a banner picture across the top, and pictures beside it that show on the days you choose each year, such as a tree from Christmas to New Year&rsquo;s or pumpkins for Halloween. Each picture can open a link.</p>
+        </div>
+        <div class="feature-item" id="search-where-you-want-it">
+          <h3>Search where you want it</h3>
+          <p>Search Google, Bing, DuckDuckGo or the wiki, with the box at the top, under the title or at the bottom. It's ready to type in as soon as the page opens.</p>
+        </div>
+        <div class="feature-item" id="keep-it-or-share-it">
+          <h3>Keep it, or share it</h3>
+          <p>A homepage is yours alone unless you share it with people you pick, with everyone in the wiki, or with anyone who can open the wiki's address. Give it its own theme, or let it follow yours.</p>
+        </div>
+        <div class="feature-item" id="your-wiki-on-the-same-page">
+          <h3>Your wiki on the same page</h3>
+          <p>A This wiki row puts what you worked on lately, your starred spaces and your bookmarks one click away, under your own links.</p>
+        </div>
+    </section>
+
+    <section class="feature-cta">
+      <h2>See it for yourself</h2>
+      <p><a href="../download.html">Download the free beta</a> and open the demo wiki from setup or the tray icon: it&rsquo;s this wiki, and nothing you do there is kept. See <a href="../pricing.html">pricing</a> for after the beta, or go back to <a href="../#homepage">all the features</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="../privacy.html">Privacy</a></nav>
+      <span class="footer-note">Also from EmuKey: <a href="https://inclosemail.com/">InCloseMail</a></span>
+    </div>
+    <div class="wrap">
+      <p class="legal">DesktopWiki is made by EmuKey LLC. It is not made by, endorsed by or affiliated with Atlassian. Confluence is a trademark of Atlassian. Claude is a trademark of Anthropic. Windows is a trademark of the Microsoft group of companies. Other product names on this page are trademarks of their owners.</p>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>

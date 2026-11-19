@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The wiki - DesktopWiki</title>
+  <meta name="description" content="Spaces, a page tree and an editor that looks like the page: a classic wiki.">
+  <link rel="icon" type="image/png" href="../dw-book.png">
+  <link rel="apple-touch-icon" href="../dw-book.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="../theme.js" defer></script>
+</head>
+<body>
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../">
+          <img src="../dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <p class="crumb"><a href="../#features">Features</a> &rsaquo; The wiki</p>
+      <h1>A classic wiki, feature for feature</h1>
+      <p class="lede lede-under">If you've kept notes in a team wiki at work, you'll know your way around: spaces, a page tree on the left and an editor that looks like the page.</p>
+    </div>
+  </header>
+
+  <main class="wrap feature-page">
+    <nav class="feature-nav" aria-label="Feature pages">
+        <a href="wiki.html" aria-current="page">The wiki</a>
+        <a href="homepage.html">Your homepage</a>
+        <a href="passwords.html">Passwords</a>
+    </nav>
+
+    <figure class="shot">
+      <a class="shot-light" href="img/wiki-light.png"><img src="img/wiki-light.png" width="1920" height="1200" alt="The Household space with its page tree on the left and the page The boiler: a warning panel about the pressure, a table of service visits with colored status labels, a tip panel and a label."></a>
+      <a class="shot-dark" href="img/wiki-dark.png"><img src="img/wiki-dark.png" width="1920" height="1200" loading="lazy" alt="The Household space with its page tree on the left and the page The boiler: a warning panel about the pressure, a table of service visits with colored status labels, a tip panel and a label. In dark mode."></a>
+      <figcaption>From the demo wiki, the Morgan family&rsquo;s. The picture follows this page&rsquo;s light or dark mode; click it to see it full size.</figcaption>
+    </figure>
+
+    <section class="feature-list">
+        <div class="feature-item" id="spaces-and-a-page-tree">
+          <h3>Spaces and a page tree</h3>
+          <p>A shared space for each topic, such as Household, Recipes or a project, plus a personal space for everyone. Each has a home page, a page tree, its own shortcuts and a picture. Start one blank, or as documentation, a knowledge base or a team space, and keep it to yourself until you're ready to share it.</p>
+        </div>
+        <div class="feature-item" id="edit-what-you-see">
+          <h3>Edit what you see</h3>
+          <p>A visual editor like the one you know from work: headings, text color, lists, tables with merged and colored cells, code blocks, quotes, and info, note, warning and tip panels. Add dates, status labels, emoji and anchors, with the same typing shortcuts and find and replace. No markup to learn, though you can paste Markdown.</p>
+        </div>
+        <div class="feature-item" id="page-layouts">
+          <h3>Page layouts</h3>
+          <p>Put text in two or three columns, with or without a sidebar, and as many sections of columns as a page needs, with ordinary text between them. On a phone the columns stack.</p>
+        </div>
+        <div class="feature-item" id="drafts-you-dont-lose">
+          <h3>Drafts you don't lose</h3>
+          <p>What you type is kept as a draft and comes back if you close the tab. Preview it or compare it with the published page, then save it with a short note on what you changed, or without telling watchers about a small fix.</p>
+        </div>
+        <div class="feature-item" id="pages-that-stay-up-to-date">
+          <h3>Pages that stay up to date</h3>
+          <p>Insert a table of contents, the pages under this one, the space's page tree, its recent updates and contributors, the pages with a label, or another page's text. Each is worked out whenever the page is shown, from what the reader may see.</p>
+        </div>
+        <div class="feature-item" id="templates">
+          <h3>Templates</h3>
+          <p>Start a page from a template: Meeting notes, Decision, How-to, Troubleshooting and Retrospective come built in, and admins keep their own for one space or every space. A {date} in the title fills in the day.</p>
+        </div>
+        <div class="feature-item" id="checklists">
+          <h3>Checklists</h3>
+          <p>Packing lists, chores, shopping: check items off right on the page, no editing needed. Check all and Uncheck all reset a list, a table of boxes or the whole page, and Undo puts the check marks back.</p>
+        </div>
+        <div class="feature-item" id="attachments-and-pictures">
+          <h3>Attachments and pictures</h3>
+          <p>Attach files to any page, or paste and drop pictures straight into the text. Size, center, frame and caption a picture, or show a page's pictures as a gallery. Upload a file again and the earlier version is kept.</p>
+        </div>
+        <div class="feature-item" id="labels">
+          <h3>Labels</h3>
+          <p>Tag pages and blog posts with labels, then click one to see every page that has it, in one space or all of them, with related labels. A page can list the pages with a label, kept up to date.</p>
+        </div>
+        <div class="feature-item" id="comments-and-mentions">
+          <h3>Comments and @mentions</h3>
+          <p>Talk about a page underneath it, with replies. Type @ and a name in a page or a comment, and that person hears of it under the bell, or mention a whole group at once.</p>
+        </div>
+        <div class="feature-item" id="page-history">
+          <h3>Page history</h3>
+          <p>Turn it on and every save is kept, or just the last 7, 30 or as many as you choose, each with its note on what changed. See who changed what, compare any two versions side by side, and restore an older one.</p>
+        </div>
+        <div class="feature-item" id="bring-your-old-wiki">
+          <h3>Bring your old wiki</h3>
+          <p>Import a Confluence space export or a whole-site backup, every space at once: pages, blog posts, attachments, comments, labels, templates, profile pictures, authors and dates, with as many earlier versions as you choose. Layouts, panels and macros come across, and links between the spaces are kept. Anything that can't be converted is kept as a marked placeholder, never dropped. Try it for a few days, then import again: each space replaces the one that came in before, or erase the wiki's spaces and start over.</p>
+        </div>
+        <div class="feature-item" id="print-it-or-take-it-with-you">
+          <h3>Print it, or take it with you</h3>
+          <p>Print a page, or a page with every page under it, with a contents list first and the comments if you want them, or save it as a PDF. It always prints black on white, whatever your theme. Download a page as a Word document or as Markdown, or a whole space as a .zip of web pages or Markdown files, with its blog and attached files. Everyone can export what they can read, and DesktopWiki can import the .zip back.</p>
+        </div>
+        <div class="feature-item" id="search-everything">
+          <h3>Search everything</h3>
+          <p>Results as you type, across every page you can see or in one space, with the matching words marked. &ldquo;Boil&rdquo; finds &ldquo;boiler&rdquo; and &ldquo;boiling,&rdquo; in pages, comments and inside attached PDFs and text files.</p>
+        </div>
+        <div class="feature-item" id="watch-and-notifications">
+          <h3>Watch and notifications</h3>
+          <p>Watch a page or a whole space, and the bell tells you when someone changes it. Pages you make or edit are watched for you. Turn on notifications to hear about @mentions, replies, comments and shared pages on your phone or in your browser, even with the wiki closed, or as Windows notifications on the wiki&rsquo;s PC. You choose what sends one.</p>
+        </div>
+        <div class="feature-item" id="share-a-page">
+          <h3>Share a page</h3>
+          <p>Send a page to the people or groups who should read it, with a short note. It shows up under their bell, with the link one click away.</p>
+        </div>
+        <div class="feature-item" id="people-and-groups">
+          <h3>People and groups</h3>
+          <p>A directory of everyone on the wiki, with a profile each: picture, position, department, location and a few words about themselves, plus what they've worked on lately. Admins make groups, such as Kids or Parents, each with its own page.</p>
+        </div>
+        <div class="feature-item" id="a-blog-in-each-space">
+          <h3>A blog in each space</h3>
+          <p>Post news and stories to a space's blog, newest first, with the author and the date. Posts have history, attachments and search like any page.</p>
+        </div>
+        <div class="feature-item" id="bookmarks-and-your-own-lists">
+          <h3>Bookmarks and your own lists</h3>
+          <p>Bookmark pages to come back to, plus recently worked on, recently visited and starred spaces, and an All updates feed of what changed across the wiki.</p>
+        </div>
+    </section>
+
+    <section class="feature-cta">
+      <h2>See it for yourself</h2>
+      <p><a href="../download.html">Download the free beta</a> and open the demo wiki from setup or the tray icon: it&rsquo;s this wiki, and nothing you do there is kept. See <a href="../pricing.html">pricing</a> for after the beta, or go back to <a href="../#features">all the features</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="../privacy.html">Privacy</a></nav>
+      <span class="footer-note">Also from EmuKey: <a href="https://inclosemail.com/">InCloseMail</a></span>
+    </div>
+    <div class="wrap">
+      <p class="legal">DesktopWiki is made by EmuKey LLC. It is not made by, endorsed by or affiliated with Atlassian. Confluence is a trademark of Atlassian. Claude is a trademark of Anthropic. Windows is a trademark of the Microsoft group of companies. Other product names on this page are trademarks of their owners.</p>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>

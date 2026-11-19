@@ -14,8 +14,8 @@
   'use strict';
 
   // Set up the live account's products the same way, then fill this in (its token starts with live_):
-  // { environment: 'production', token: 'live_…', prices: { 'family-yearly': 'pri_…', 'family-once': …,
-  //   'family-updates': …, 'team-yearly': …, 'business-yearly': … } }
+  // { environment: 'production', token: 'live_…', prices: { 'family-yearly': 'pri_…', 'team-yearly': …,
+  //   'business-yearly': … } }
   var LIVE = null;
 
   var bought = null;

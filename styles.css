@@ -412,6 +412,30 @@ footer {
 .feature-item p { margin: 0; color: var(--muted); }
 .feature-item:target { background: var(--surface); border-radius: 0 8px 8px 0; }
 
+/* Import from Confluence: how much space a real import saved. */
+.savings { padding-top: 24px; scroll-margin-top: 16px; }
+.savings > p { color: var(--muted); }
+.table-wrap { overflow-x: auto; }
+.savings-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.savings-table th, .savings-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+.savings-table th:first-child { text-align: left; }
+.savings-table thead th { color: var(--muted); font-size: 0.875rem; font-weight: 600; }
+.savings-table tbody tr:last-child > * { border-bottom: 0; }
+.savings-table tr.total > * { font-weight: 700; }
+.savings .muted-note { font-size: 0.875rem; }
+@media (max-width: 600px) {
+  .savings-table th, .savings-table td { padding: 8px 6px; font-size: 0.875rem; }
+  .savings-table th { white-space: normal; }
+  .savings-table thead th { font-size: 0.8rem; }
+}
+
 @media (max-width: 600px) {
   .hero { padding: 20px 0 40px; }
   .topbar { margin-bottom: 28px; }

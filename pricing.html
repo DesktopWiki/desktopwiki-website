@@ -20,6 +20,7 @@
     })();
   </script>
   <script src="theme.js" defer></script>
+  <script src="buy.js" defer></script>
 </head>
 <body>
   <header class="hero hero-small">
@@ -58,7 +59,8 @@
           <p class="tier-price">$49<span>/year</span></p>
           <p class="tier-per">$8.17 a person</p>
           <p class="tier-note">Or <strong>$129 once</strong>, with a year of updates. Then $39 a year if you want to keep getting them.</p>
-          <span class="button button-soon" aria-disabled="true">On sale after the beta</span>
+          <span class="button button-soon" aria-disabled="true" data-buy="family-yearly" data-buy-label="Buy Family">On sale after the beta</span>
+          <span hidden data-buy="family-once" data-buy-class="button button-quiet" data-buy-label="Or $129 once"></span>
         </article>
 
         <article class="tier">
@@ -67,7 +69,7 @@
           <p class="tier-price">$99<span>/year</span></p>
           <p class="tier-per">$5.50 a person <span class="save">33% less</span></p>
           <p class="tier-note">Twice the price of Family, three times the people.</p>
-          <span class="button button-soon" aria-disabled="true">On sale after the beta</span>
+          <span class="button button-soon" aria-disabled="true" data-buy="team-yearly" data-buy-label="Buy Team">On sale after the beta</span>
         </article>
 
         <article class="tier">
@@ -76,10 +78,14 @@
           <p class="tier-price">$199<span>/year</span></p>
           <p class="tier-per">$3.32 a person <span class="save">40% less</span></p>
           <p class="tier-note">Twice the price of Team, three times the people.</p>
-          <span class="button button-soon" aria-disabled="true">On sale after the beta</span>
+          <span class="button button-soon" aria-disabled="true" data-buy="business-yearly" data-buy-label="Buy Business">On sale after the beta</span>
         </article>
       </div>
       <p class="tiers-fine">The price a person is with the plan full; &ldquo;less&rdquo; compares it with the plan before. Prices are in US dollars; checkout shows yours in your currency, with any sales tax or VAT. <strong>More than 60 people?</strong> <a href="mailto:support@desktopwiki.com">Write to us</a> and we&rsquo;ll make you a license for as many as you need.</p>
+      <div id="thanks" class="beta-note thanks" tabindex="-1" role="status" hidden>
+        <p><strong>Thank you!</strong> Your license is on its way to <strong id="thanks-email">the email address you gave</strong>. When it comes, open DesktopWiki&rsquo;s <strong>Configuration &rarr; License</strong>, choose <strong>Enter a license</strong>, and paste it or choose the file.</p>
+        <p>Not there in a few minutes? Look in your spam folder, or <a href="mailto:support@desktopwiki.com">write to us</a>.</p>
+      </div>
     </section>
 
     <section id="included">
@@ -119,6 +125,7 @@
         <div>
           <h3>And if I paid once for Family?</h3>
           <p>It keeps working, fully, for as long as you like. After its year of updates you just don&rsquo;t get new versions, until you add a year for $39.</p>
+          <span hidden data-buy="family-updates" data-buy-class="button button-quiet" data-buy-label="Add a year of updates, $39"></span>
         </div>
         <div>
           <h3>Who counts as a person?</h3>

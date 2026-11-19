@@ -319,6 +319,13 @@ h3 {
 .button-quiet:hover { background: var(--code-bg); }
 .button-quiet:focus-visible { outline-color: var(--link); }
 .button-soon { background: var(--code-bg); color: var(--muted); font-weight: 600; cursor: default; }
+button.button { border: 0; font: inherit; font-weight: 700; cursor: pointer; }
+button.button-quiet { border: 1px solid var(--border); }
+.tier .button + .button { margin-top: 8px; }
+#questions .button { margin-top: 10px; }
+.thanks { margin-top: 20px; }
+.thanks p { margin: 0; }
+.thanks p + p { margin-top: 6px; }
 
 .tiers-fine { color: var(--muted); font-size: 0.875rem; margin: 16px 0 0; }
 

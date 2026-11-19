@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A port is in use - DesktopWiki</title>
+  <meta name="description" content="DesktopWiki says another program is using its port: how to find that program and free the port, or pick another one.">
+  <link rel="icon" type="image/png" href="../dw-book.png">
+  <link rel="apple-touch-icon" href="../dw-book.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="../theme.js" defer></script>
+</head>
+<body>
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../">
+          <img src="../dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <p class="crumb">Help &rsaquo; A port is in use</p>
+      <h1>Another program is using the wiki&rsquo;s port</h1>
+      <p class="lede lede-under">Only one program can answer on a port. When DesktopWiki finds its port taken, it names the program that has it. Here&rsquo;s how to free the port, or move the wiki to another one.</p>
+    </div>
+  </header>
+
+  <main class="wrap doc">
+    <h2 id="quickest">The quickest fix: pick another port</h2>
+    <p>DesktopWiki works on any port from 1024 to 65535. <strong>8090</strong> is its usual one. Port 443 just leaves the port out of the address (<code>https://your-pc/</code> instead of <code>https://your-pc:8090/</code>), so it&rsquo;s nice to have but not needed.</p>
+    <ul>
+      <li>In the wiki: <strong>Configuration &rsaquo; Who can open the wiki &rsaquo; Port</strong>.</li>
+      <li>From the tray: right-click the DesktopWiki icon, <strong>Configure</strong>, then <strong>Change port&hellip;</strong></li>
+      <li>If the wiki couldn&rsquo;t start at all, DesktopWiki asks for another port right away.</li>
+    </ul>
+    <p>Bookmarks on other devices need the new address afterward. If the wiki has a desktopwiki.net name, phones and other PCs just keep using that name with the new port.</p>
+
+    <h2 id="vmware">VMware Workstation (VMware Workstation Server, port 443)</h2>
+    <p>VMware Workstation installs a service called <strong>VMware Workstation Server</strong> (<code>vmware-hostd.exe</code>). It starts with Windows and listens on port 443, even in versions that no longer have the Shared VMs feature it was made for. Your virtual machines don&rsquo;t need it: they keep working without it. Only sharing VMs and connecting to this PC from another VMware Workstation use it.</p>
+    <p>To turn it off, open <strong>PowerShell as an administrator</strong> (right-click Start, then <strong>Terminal (Admin)</strong> or <strong>Windows PowerShell (Admin)</strong>) and run these two commands:</p>
+    <pre><code>Stop-Service VMwareHostd
+Set-Service VMwareHostd -StartupType Disabled</code></pre>
+    <p>The first stops it now. The second keeps it from starting again with Windows. On VMware Workstation 16.1 and earlier you can do the same from VMware itself: <strong>Edit &rsaquo; Preferences &rsaquo; Shared VMs &rsaquo; Disable Sharing</strong>. There you can also change its port instead.</p>
+    <p>To turn it back on later:</p>
+    <pre><code>Set-Service VMwareHostd -StartupType Automatic
+Start-Service VMwareHostd</code></pre>
+
+    <h2 id="windows">Windows&rsquo; own web server (HTTP.sys or IIS)</h2>
+    <p>When DesktopWiki says <strong>Windows&rsquo; web server</strong> has the port, it&rsquo;s usually IIS, Microsoft&rsquo;s web server, which you or a program may have turned on. If you don&rsquo;t run websites with IIS, stop its service in an administrator PowerShell:</p>
+    <pre><code>Stop-Service W3SVC
+Set-Service W3SVC -StartupType Disabled</code></pre>
+    <p>If you do use IIS, give the wiki another port instead (see <a href="#quickest">above</a>).</p>
+
+    <h2 id="others">Apache, nginx, XAMPP, Docker and other web servers</h2>
+    <ul>
+      <li><strong>Apache or XAMPP:</strong> stop it from its control panel, or change the <code>Listen</code> line in <code>httpd.conf</code> (and <code>httpd-ssl.conf</code> for 443).</li>
+      <li><strong>nginx or Caddy:</strong> stop it, or change the port in its configuration file.</li>
+      <li><strong>Docker Desktop:</strong> a container is publishing the port (for example <code>-p 443:443</code>). Stop that container, or publish it on another port.</li>
+    </ul>
+
+    <h2 id="find">Finding the program yourself</h2>
+    <p>DesktopWiki names the program when Windows tells it. To look yourself, run this in PowerShell, with the wiki&rsquo;s port in place of 443:</p>
+    <pre><code>Get-NetTCPConnection -LocalPort 443 -State Listen | ForEach-Object { Get-Process -Id $_.OwningProcess }</code></pre>
+    <p>Process 4, named <strong>System</strong>, is Windows&rsquo; own web server (see <a href="#windows">above</a>).</p>
+
+    <h2 id="after">After freeing the port</h2>
+    <p>Start the wiki again if it stopped: right-click the DesktopWiki icon in the tray, choose <strong>Configure</strong>, and click <strong>Start</strong> beside <strong>Runs</strong>. Restarting the PC works too. Then open the wiki&rsquo;s address to check it&rsquo;s the wiki that answers.</p>
+
+    <h2 id="why">Why some programs used to share the port with the wiki</h2>
+    <p>Windows lets two programs listen on one port when both ask for it, and then either one may get each visit. With VMware Workstation Server on 443, that meant <code>https://your-pc/</code> could open VMware&rsquo;s page instead of the wiki. DesktopWiki now claims its port for itself: it won&rsquo;t start on a port another program holds, and it says which program has it, so nothing quietly takes the wiki&rsquo;s visitors.</p>
+
+    <p>Still stuck? Write to <a href="mailto:support@desktopwiki.com">support@desktopwiki.com</a> with the message DesktopWiki showed.</p>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="../privacy.html">Privacy</a></nav>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>

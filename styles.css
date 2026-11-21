@@ -177,6 +177,28 @@ pre code { padding: 0; background: none; }
 }
 .demo-note strong { color: var(--hero-text); }
 
+.setup-note {
+  color: var(--hero-muted);
+  margin: 0 0 8px;
+  max-width: 760px;
+}
+.setup-note strong,
+.setup-note a { color: var(--hero-text); }
+
+/* .shot.hero-shot outranks the .shot rules further down. */
+.shot.hero-shot { margin: 22px 0 26px; max-width: 960px; }
+.shot.hero-shot img { border-color: rgba(255, 255, 255, 0.25); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35); }
+.shot.hero-shot figcaption { color: var(--hero-muted); }
+
+.example {
+  margin: 0 0 24px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+}
+
 .hero-small { padding-bottom: 36px; }
 .hero-small h1 { margin-bottom: 0; }
 

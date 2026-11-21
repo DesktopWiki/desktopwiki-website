@@ -41,7 +41,7 @@
 
   <main class="wrap doc">
     <h2 id="quickest">The quickest fix: pick another port</h2>
-    <p>DesktopWiki works on any port from 1024 to 65535. <strong>8090</strong> is its usual one. Port 443 just leaves the port out of the address (<code>https://your-pc/</code> instead of <code>https://your-pc:8090/</code>), so it&rsquo;s nice to have but not needed.</p>
+    <p>DesktopWiki starts on ports 80 and 443, so addresses need no port number (<code>https://your-pc/</code>), but it works on any port from 1024 to 65535 just as well. <strong>8090</strong> is the usual choice when another program has 443: a new wiki moves there by itself, and its address becomes <code>https://your-pc:8090/</code>.</p>
     <ul>
       <li>In the wiki: <strong>Configuration &rsaquo; Who can open the wiki &rsaquo; Port</strong>.</li>
       <li>From the tray: right-click the DesktopWiki icon, <strong>Configure</strong>, then <strong>Change port&hellip;</strong></li>

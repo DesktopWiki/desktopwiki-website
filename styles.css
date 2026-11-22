@@ -466,25 +466,22 @@ footer {
   .split { grid-template-columns: 1fr; }
 }
 
-/* Wide screens. Below 1280px nothing here applies, so phones and laptops look as before. */
+/* Wide screens. Below 1280px nothing here applies, so phones and laptops look as before.
+   Above it the page uses the whole window: the card grids add columns as the window widens
+   (about 9 across at 2560px), while paragraphs keep a comfortable line length. */
 
 @media (min-width: 1280px) {
-  .wrap { max-width: 1240px; padding: 0 24px; }
-  .hero h1 { font-size: 2.5rem; }
-  .shot.hero-shot { max-width: 1120px; }
-  /* Long paragraphs stay a comfortable line length; the cards and pictures use the full width. */
-  .lede, .demo-note, .setup-note, .section-lede, .beta-note { max-width: 860px; }
-  /* Text pages line up with the header above them instead of sitting off to one side. */
-  .wrap.doc { max-width: 1240px; }
-  .wrap.doc > * { max-width: 760px; }
-  /* Feature pages: two columns of features. */
-  .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; align-items: start; }
+  .wrap { max-width: none; padding: 0 clamp(24px, 3vw, 72px); }
+  .hero h1 { font-size: 2.5rem; max-width: 1200px; }
+  .shot.hero-shot { max-width: 1400px; }
+  .lede, .demo-note, .setup-note, .section-lede, .beta-note, .doc > *, .feature-page > p { max-width: 860px; }
+  .grid { gap: 20px; }
+  .tiers, .savings { max-width: 1240px; }
+  .feature-page .shot { max-width: 1400px; }
+  /* Feature pages: as many columns of features as fit. */
+  .feature-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 0 40px; align-items: start; }
 }
 
-/* Big monitors: enlarge the whole page, so a 1440p or 4K screen isn't a narrow strip of small print.
-   zoom scales text, spacing and pictures alike; media queries still see the real window width. */
-@media (min-width: 1800px) { :root { zoom: 1.15; } }
-@media (min-width: 2200px) { :root { zoom: 1.35; } }
-@media (min-width: 2600px) { :root { zoom: 1.6; } }
-@media (min-width: 3200px) { :root { zoom: 1.85; } }
-@media (min-width: 3600px) { :root { zoom: 2.1; } }
+/* 4K at 100% Windows scaling: enlarge a little so the print isn't tiny, still leaving room for about 9 cards. */
+@media (min-width: 2700px) { :root { zoom: 1.25; } }
+@media (min-width: 3300px) { :root { zoom: 1.5; } }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting started with DesktopWiki - DesktopWiki</title>
+  <meta name="description" content="What spaces and pages are, and where everything is: the top bar, the sidebar and your profile menu.">
+  <link rel="icon" type="image/png" href="../dw-book.png">
+  <link rel="apple-touch-icon" href="../dw-book.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="../theme.js" defer></script>
+</head>
+<body>
+  <!-- Written by tools/Build-HelpSite.ps1 in the desktopwiki repository from src/DesktopWiki/web/help/articles.json. Change the article there, not here. -->
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../">
+          <img src="../dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <p class="crumb"><a href="./">Help</a> &rsaquo; Getting started with DesktopWiki</p>
+      <h1>Getting started with DesktopWiki</h1>
+      <p class="lede lede-under">What spaces and pages are, and where everything is: the top bar, the sidebar and your profile menu.</p>
+    </div>
+  </header>
+
+  <main class="wrap doc">
+    <p class="muted">Last updated Nov 21, 2026</p>
+    <p>DesktopWiki keeps your family's or team's pages on one Windows PC. Anyone on your network opens it in a browser, on a PC, a tablet or a phone.</p><h2>Spaces and pages</h2><p>Pages live in <strong>spaces</strong>. Everyone has a personal space of their own, and admins make shared spaces (Household, Recipes, the office) for everyone. Each space has a home page, and pages sit under it in a tree.</p><h2>Finding your way</h2><ul><li><strong>The top bar:</strong> Spaces, People, Create, search, and on the right your bell, Help (the ?), Configuration (admins) and your profile menu.</li><li><strong>The sidebar:</strong> inside a space it shows the space's pages as a tree; elsewhere, your lists (Bookmarks, My tasks, Recently visited) and your starred spaces. The button in the upper left hides and shows it, as does <kbd>Ctrl</kbd>+<kbd>[</kbd>.</li><li><strong>Your profile menu</strong> (your picture, top right): your profile, your account, Theme, and Sign out.</li></ul>
+    <p>Still stuck? Write to <a href="mailto:support@desktopwiki.com">support@desktopwiki.com</a>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="../privacy.html">Privacy</a><a href="../license.html">License and refunds</a></nav>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>

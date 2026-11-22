@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bookmarks, watching and notifications - DesktopWiki</title>
+  <meta name="description" content="Keep pages at hand, hear when they change, and choose what reaches your bell.">
+  <link rel="icon" type="image/png" href="../dw-book.png">
+  <link rel="apple-touch-icon" href="../dw-book.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="../theme.js" defer></script>
+</head>
+<body>
+  <!-- Written by tools/Build-HelpSite.ps1 in the desktopwiki repository from src/DesktopWiki/web/help/articles.json. Change the article there, not here. -->
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../">
+          <img src="../dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <p class="crumb"><a href="./">Help</a> &rsaquo; Bookmarks, watching and notifications</p>
+      <h1>Bookmarks, watching and notifications</h1>
+      <p class="lede lede-under">Keep pages at hand, hear when they change, and choose what reaches your bell.</p>
+    </div>
+  </header>
+
+  <main class="wrap doc">
+    <p class="muted">Last updated Nov 21, 2026</p>
+    <ul><li><strong>Bookmark</strong> at the top of a page adds it to your Bookmarks (the star in the top bar).</li><li><strong>Watch</strong> tells you when the page (or its whole space) changes or gets a comment. Pages you make or edit are watched for you.</li><li>The <strong>bell</strong> lists what's new: edits to pages you watch, replies, pages shared with you, and <strong>@mentions</strong> of you.</li><li><strong>Your account → Notifications</strong> chooses what you hear about, in the bell, the browser and on the wiki's own PC.</li></ul>
+    <p>Still stuck? Write to <a href="mailto:support@desktopwiki.com">support@desktopwiki.com</a>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="../privacy.html">Privacy</a><a href="../license.html">License and refunds</a></nav>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>

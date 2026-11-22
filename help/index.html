@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DesktopWiki help - DesktopWiki</title>
+  <meta name="description" content="How to use DesktopWiki: pages, spaces, search, sharing, vaults, backups and more.">
+  <link rel="icon" type="image/png" href="../dw-book.png">
+  <link rel="apple-touch-icon" href="../dw-book.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="../theme.js" defer></script>
+</head>
+<body>
+  <!-- Written by tools/Build-HelpSite.ps1 in the desktopwiki repository from src/DesktopWiki/web/help/articles.json. Change the article there, not here. -->
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../">
+          <img src="../dw-book.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <p class="crumb">Help</p>
+      <h1>DesktopWiki help</h1>
+      <p class="lede lede-under">How to use DesktopWiki. The same articles are in the wiki itself: click ? in its top bar.</p>
+    </div>
+  </header>
+
+  <main class="wrap doc">
+    <ul class="help-index">
+      <li><a href="getting-started"><strong>Getting started with DesktopWiki</strong></a><br>What spaces and pages are, and where everything is: the top bar, the sidebar and your profile menu.</li>
+      <li><a href="create-a-page"><strong>Create a page</strong></a><br>Make a new page in a space, under another page, or from a template.</li>
+      <li><a href="edit-a-page"><strong>Edit a page</strong></a><br>The editor&#39;s toolbar, shortcuts, drafts, and the note that goes into the page&#39;s history.</li>
+      <li><a href="organize-pages"><strong>Move, archive or delete a page</strong></a><br>Change where a page sits in the tree, archive it, or move it to the trash and bring it back.</li>
+      <li><a href="spaces"><strong>Spaces</strong></a><br>Personal and shared spaces, starring a space, and who can see and edit it.</li>
+      <li><a href="search"><strong>Search the wiki</strong></a><br>Find pages as you type, or search everything with filters.</li>
+      <li><a href="bookmarks-and-watching"><strong>Bookmarks, watching and notifications</strong></a><br>Keep pages at hand, hear when they change, and choose what reaches your bell.</li>
+      <li><a href="share-a-page"><strong>Share a page</strong></a><br>Send a page to people in the wiki, or make a link for someone without an account.</li>
+      <li><a href="page-history"><strong>Page history</strong></a><br>See earlier versions of a page, compare them, and restore one.</li>
+      <li><a href="tasks"><strong>Tasks and My tasks</strong></a><br>Give a checklist item to someone with a due date, and see everything that&#39;s yours.</li>
+      <li><a href="templates"><strong>Templates</strong></a><br>Start pages from a template, and make templates of your own for a space or the whole wiki.</li>
+      <li><a href="export-and-print"><strong>Export, print and present</strong></a><br>Save a page as PDF, Word or Markdown, show it as slides, or keep it for offline reading.</li>
+      <li><a href="vaults"><strong>Vaults for passwords</strong></a><br>Keep passwords and private documents in encrypted vaults, and share a vault with family.</li>
+      <li><a href="other-devices"><strong>Open the wiki on another device</strong></a><br>Use the wiki from another PC, a tablet or a phone without certificate warnings.</li>
+      <li><a href="keyboard-shortcuts"><strong>Keyboard shortcuts</strong></a><br>The keys that work across the wiki and in the editor.</li>
+      <li><a href="backups"><strong>Backups (admins)</strong></a><br>How the wiki is backed up, and how to restore it.</li>
+      <li><a href="import-from-confluence"><strong>Import from Confluence (admins)</strong></a><br>Bring spaces, pages, attachments, comments and permissions over from a Confluence export.</li>
+      <li><a href="port-in-use"><strong>Another program is using the wiki&#39;s port</strong></a><br>DesktopWiki says its port is taken: how to free it, or move the wiki to another port.</li>
+    </ul>
+    <p>Still stuck? Write to <a href="mailto:support@desktopwiki.com">support@desktopwiki.com</a>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="../privacy.html">Privacy</a><a href="../license.html">License and refunds</a></nav>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>

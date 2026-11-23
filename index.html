@@ -3,10 +3,76 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DesktopWiki</title>
-  <meta name="description" content="A wiki and a password manager for your home or small team that run from one Windows program on your own PC, with everything stored in one file.">
-  <link rel="icon" type="image/png" href="dw-logo.png">
-  <link rel="apple-touch-icon" href="dw-logo.png">
+  <title>DesktopWiki: a private wiki for your family or small team</title>
+  <meta name="description" content="A private wiki and password manager for your family or small team, running on your own Windows PC. Everyone opens it in a browser. Free for one person.">
+  <link rel="canonical" href="https://desktopwiki.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DesktopWiki">
+  <meta property="og:title" content="DesktopWiki: a private wiki for your family or small team">
+  <meta property="og:description" content="A private wiki and password manager for your family or small team, running on your own Windows PC. Everyone opens it in a browser. Free for one person.">
+  <meta property="og:url" content="https://desktopwiki.com/">
+  <meta property="og:image" content="https://desktopwiki.com/features/img/wiki-light.png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="DesktopWiki's Household space with its page tree and the page The furnace.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DesktopWiki: a private wiki for your family or small team">
+  <meta name="twitter:description" content="A private wiki and password manager for your family or small team, running on your own Windows PC. Everyone opens it in a browser. Free for one person.">
+  <meta name="twitter:image" content="https://desktopwiki.com/features/img/wiki-light.png">
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "DesktopWiki",
+    "url": "https://desktopwiki.com/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "EmuKey LLC",
+      "url": "https://emukey.com"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "EmuKey LLC",
+    "url": "https://emukey.com",
+    "logo": "https://desktopwiki.com/dw-logo.png"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DesktopWiki",
+    "url": "https://desktopwiki.com/",
+    "description": "A private wiki and password manager for your family or small team, running on your own Windows PC. Everyone opens it in a browser. Free for one person.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows 10 (1809 or later), Windows 11, Windows Server 2019 or later (64-bit)",
+    "downloadUrl": "https://desktopwiki.com/download.html",
+    "license": "https://desktopwiki.com/license.html",
+    "screenshot": [
+      "https://desktopwiki.com/features/img/wiki-light.png",
+      "https://desktopwiki.com/features/img/import-page-light.png",
+      "https://desktopwiki.com/features/img/homepage-light.png",
+      "https://desktopwiki.com/features/img/passwords-light.png"
+    ],
+    "image": "https://desktopwiki.com/features/img/wiki-light.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "EmuKey LLC",
+      "url": "https://emukey.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "name": "Free",
+      "description": "1 person, every feature",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+]
+</script>
+  <link rel="icon" type="image/png" href="dw-logo-96.png">
+  <link rel="apple-touch-icon" href="dw-logo-180.png">
   <link rel="stylesheet" href="styles.css">
   <script>
     // Set the theme before the page draws, so it never flashes the wrong one.
@@ -26,7 +92,7 @@
     <div class="wrap">
       <div class="topbar">
         <a class="brand" href="./">
-          <img src="dw-logo.png" width="40" height="40" alt="">
+          <img src="dw-logo-96.png" width="40" height="40" alt="">
           <span>DesktopWiki</span>
         </a>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
@@ -53,8 +119,8 @@
       <p class="setup-note"><strong>Install on one Windows PC. Everyone else uses a browser.</strong> The PC that holds the wiki needs to stay on and awake while people use it. To reach it from outside your home or office too, see <a href="#away">Away from home</a>.</p>
 
       <figure class="shot hero-shot">
-        <a class="shot-light" href="features/img/wiki-light.png" target="_blank" rel="noopener"><img src="features/img/wiki-light.png" width="1920" height="1200" alt="DesktopWiki in a browser: the Household space with its page tree on the left and the page The furnace, with its owner and review date, a note about cold air, a table of service visits and how to reset it."></a>
-        <a class="shot-dark" href="features/img/wiki-dark.png" target="_blank" rel="noopener"><img src="features/img/wiki-dark.png" width="1920" height="1200" loading="lazy" alt="DesktopWiki in a browser: the Household space with its page tree on the left and the page The furnace, with its owner and review date, a note about cold air, a table of service visits and how to reset it. In dark mode."></a>
+        <a class="shot-light" href="features/img/wiki-light.png" target="_blank" rel="noopener"><img src="features/img/wiki-light.webp" width="1600" height="1000" alt="DesktopWiki in a browser: the Household space with its page tree on the left and the page The furnace, with its owner and review date, a note about cold air, a table of service visits and how to reset it."></a>
+        <a class="shot-dark" href="features/img/wiki-dark.png" target="_blank" rel="noopener"><img src="features/img/wiki-dark.webp" width="1600" height="1000" loading="lazy" alt="DesktopWiki in a browser: the Household space with its page tree on the left and the page The furnace, with its owner and review date, a note about cold air, a table of service visits and how to reset it. In dark mode."></a>
         <figcaption>The furnace&rsquo;s page in the demo wiki, the Morgan family&rsquo;s. Click it to open it full size in a new tab.</figcaption>
       </figure>
 

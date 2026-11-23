@@ -4,9 +4,74 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Import from Confluence - DesktopWiki</title>
-  <meta name="description" content="Bring a Confluence space export or a whole-site backup into DesktopWiki: pages, pictures, attachments, history and all.">
-  <link rel="icon" type="image/png" href="../dw-logo.png">
-  <link rel="apple-touch-icon" href="../dw-logo.png">
+  <meta name="description" content="Bring a Confluence space export or a whole-site backup into DesktopWiki: pages, pictures, attachments, comments and history, looking the way they did.">
+  <link rel="canonical" href="https://desktopwiki.com/features/import.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DesktopWiki">
+  <meta property="og:title" content="Import from Confluence - DesktopWiki">
+  <meta property="og:description" content="Bring a Confluence space export or a whole-site backup into DesktopWiki: pages, pictures, attachments, comments and history, looking the way they did.">
+  <meta property="og:url" content="https://desktopwiki.com/features/import.html">
+  <meta property="og:image" content="https://desktopwiki.com/features/img/import-page-light.png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="A page imported from Confluence into DesktopWiki.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Import from Confluence - DesktopWiki">
+  <meta name="twitter:description" content="Bring a Confluence space export or a whole-site backup into DesktopWiki: pages, pictures, attachments, comments and history, looking the way they did.">
+  <meta name="twitter:image" content="https://desktopwiki.com/features/img/import-page-light.png">
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://desktopwiki.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Import from Confluence",
+        "item": "https://desktopwiki.com/features/import.html"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "DesktopWiki",
+    "url": "https://desktopwiki.com/",
+    "description": "Bring a Confluence space export or a whole-site backup into DesktopWiki: pages, pictures, attachments, comments and history, looking the way they did.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows 10 (1809 or later), Windows 11, Windows Server 2019 or later (64-bit)",
+    "downloadUrl": "https://desktopwiki.com/download.html",
+    "license": "https://desktopwiki.com/license.html",
+    "screenshot": [
+      "https://desktopwiki.com/features/img/import-page-light.png",
+      "https://desktopwiki.com/features/img/import-report-light.png",
+      "https://desktopwiki.com/features/img/import-choose-light.png"
+    ],
+    "image": "https://desktopwiki.com/features/img/import-page-light.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "EmuKey LLC",
+      "url": "https://emukey.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "name": "Free",
+      "description": "1 person, every feature",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+]
+</script>
+  <link rel="icon" type="image/png" href="../dw-logo-96.png">
+  <link rel="apple-touch-icon" href="../dw-logo-180.png">
   <link rel="stylesheet" href="../styles.css">
   <script>
     // Set the theme before the page draws, so it never flashes the wrong one.
@@ -26,7 +91,7 @@
     <div class="wrap">
       <div class="topbar">
         <a class="brand" href="../">
-          <img src="../dw-logo.png" width="40" height="40" alt="">
+          <img src="../dw-logo-96.png" width="40" height="40" alt="">
           <span>DesktopWiki</span>
         </a>
         <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
@@ -48,8 +113,8 @@
     </nav>
 
     <figure class="shot">
-      <a class="shot-light" href="img/import-page-light.png" target="_blank" rel="noopener"><img src="img/import-page-light.png" width="1920" height="1200" alt="The page Backyard deck after the import, in the Projects space: a two-column layout with an info panel, a table of steps with @mentions and colored status labels, a checklist and labels on the left, and a drawn deck plan, a picture of the framing and a tip panel on the right."></a>
-      <a class="shot-dark" href="img/import-page-dark.png" target="_blank" rel="noopener"><img src="img/import-page-dark.png" width="1920" height="1200" loading="lazy" alt="The page Backyard deck after the import, in the Projects space: a two-column layout with an info panel, a table of steps with @mentions and colored status labels, a checklist and labels on the left, and a drawn deck plan, a picture of the framing and a tip panel on the right. In dark mode."></a>
+      <a class="shot-light" href="img/import-page-light.png" target="_blank" rel="noopener"><img src="img/import-page-light.webp" width="1600" height="1000" alt="The page Backyard deck after the import, in the Projects space: a two-column layout with an info panel, a table of steps with @mentions and colored status labels, a checklist and labels on the left, and a drawn deck plan, a picture of the framing and a tip panel on the right."></a>
+      <a class="shot-dark" href="img/import-page-dark.png" target="_blank" rel="noopener"><img src="img/import-page-dark.webp" width="1600" height="1000" loading="lazy" alt="The page Backyard deck after the import, in the Projects space: a two-column layout with an info panel, a table of steps with @mentions and colored status labels, a checklist and labels on the left, and a drawn deck plan, a picture of the framing and a tip panel on the right. In dark mode."></a>
       <figcaption>A page from the Whitfields&rsquo; Confluence, just after the import: the layout, panels, status labels, mentions, checklist, labels and pictures came across as they were. The Whitfields are made up, and so is their wiki. The picture follows this page&rsquo;s light or dark mode; click it to open it full size in a new tab.</figcaption>
     </figure>
 
@@ -86,15 +151,15 @@
     </section>
 
     <figure class="shot">
-      <a href="img/cloud-home.png" target="_blank" rel="noopener"><img src="img/cloud-home.png" width="2920" height="895" loading="lazy" alt="Side by side: on the left, a space's home page in Confluence Cloud, with its logo picture, a welcome heading, Start here links and a list of blog posts; on the right, the same page in DesktopWiki after the import, with the same picture, text, links and blog post list."></a>
+      <a href="img/cloud-home.png" target="_blank" rel="noopener"><img src="img/cloud-home.webp" width="1600" height="490" loading="lazy" alt="Side by side: on the left, a space's home page in Confluence Cloud, with its logo picture, a welcome heading, Start here links and a list of blog posts; on the right, the same page in DesktopWiki after the import, with the same picture, text, links and blog post list."></a>
       <figcaption>A space from Confluence Cloud, on the left, and the same space in DesktopWiki after importing Cloud&rsquo;s CSV export, on the right. Cedar Creek Coffee is a made-up shop, and its space was made for this test. Click a picture to open it full size in a new tab.</figcaption>
     </figure>
     <figure class="shot">
-      <a href="img/cloud-opening-checklist.png" target="_blank" rel="noopener"><img src="img/cloud-opening-checklist.png" width="2920" height="895" loading="lazy" alt="Side by side: the page Opening checklist in Confluence Cloud and in DesktopWiki, each with a panel, seven checklist items and the labels checklist and daily; DesktopWiki also shows the page's comment."></a>
+      <a href="img/cloud-opening-checklist.png" target="_blank" rel="noopener"><img src="img/cloud-opening-checklist.webp" width="1600" height="490" loading="lazy" alt="Side by side: the page Opening checklist in Confluence Cloud and in DesktopWiki, each with a panel, seven checklist items and the labels checklist and daily; DesktopWiki also shows the page's comment."></a>
       <figcaption>A checklist page, its labels and its comment.</figcaption>
     </figure>
     <figure class="shot">
-      <a href="img/cloud-espresso-drinks.png" target="_blank" rel="noopener"><img src="img/cloud-espresso-drinks.png" width="2920" height="895" loading="lazy" alt="Side by side: the page Espresso drinks in Confluence Cloud and in DesktopWiki, each with a table of drinks with merged heading cells for 12 oz and 16 oz shots, milk and cup; DesktopWiki also shows the page's info panel and labels."></a>
+      <a href="img/cloud-espresso-drinks.png" target="_blank" rel="noopener"><img src="img/cloud-espresso-drinks.webp" width="1600" height="490" loading="lazy" alt="Side by side: the page Espresso drinks in Confluence Cloud and in DesktopWiki, each with a table of drinks with merged heading cells for 12 oz and 16 oz shots, milk and cup; DesktopWiki also shows the page's info panel and labels."></a>
       <figcaption>A recipe table with merged heading cells, an info panel and labels.</figcaption>
     </figure>
 
@@ -118,14 +183,14 @@
     </section>
 
     <figure class="shot">
-      <a class="shot-light" href="img/import-report-light.png" target="_blank" rel="noopener"><img src="img/import-report-light.png" width="1920" height="2009" loading="lazy" alt="The import's report: 5 spaces with their pages, files and earlier versions; Size and versions, where the wiki keeps 248 MB of the 1.65 GB these took in Confluence, 85% saved, with page text down from 1.45 GB to 39.7 MB; the pages with the most versions, from 6011 down to 8 kept; and the largest files."></a>
-      <a class="shot-dark" href="img/import-report-dark.png" target="_blank" rel="noopener"><img src="img/import-report-dark.png" width="1920" height="2009" loading="lazy" alt="The import's report: 5 spaces with their pages, files and earlier versions; Size and versions, where the wiki keeps 248 MB of the 1.65 GB these took in Confluence, 85% saved, with page text down from 1.45 GB to 39.7 MB; the pages with the most versions, from 6011 down to 8 kept; and the largest files. In dark mode."></a>
+      <a class="shot-light" href="img/import-report-light.png" target="_blank" rel="noopener"><img src="img/import-report-light.webp" width="1600" height="1674" loading="lazy" alt="The import's report: 5 spaces with their pages, files and earlier versions; Size and versions, where the wiki keeps 248 MB of the 1.65 GB these took in Confluence, 85% saved, with page text down from 1.45 GB to 39.7 MB; the pages with the most versions, from 6011 down to 8 kept; and the largest files."></a>
+      <a class="shot-dark" href="img/import-report-dark.png" target="_blank" rel="noopener"><img src="img/import-report-dark.webp" width="1600" height="1674" loading="lazy" alt="The import's report: 5 spaces with their pages, files and earlier versions; Size and versions, where the wiki keeps 248 MB of the 1.65 GB these took in Confluence, 85% saved, with page text down from 1.45 GB to 39.7 MB; the pages with the most versions, from 6011 down to 8 kept; and the largest files. In dark mode."></a>
       <figcaption>That import&rsquo;s report, with its numbers as they were. The names of its spaces, pages and files are made up, and the Whitfields stand in for the family.</figcaption>
     </figure>
 
     <figure class="shot">
-      <a class="shot-light" href="img/import-choose-light.png" target="_blank" rel="noopener"><img src="img/import-choose-light.png" width="1920" height="1200" loading="lazy" alt="Configuration, Confluence Import, after reading the Whitfields' site backup: it has 5 spaces, each checked, with its pages, files, comments and earlier versions counted, and a name and space key for the new space."></a>
-      <a class="shot-dark" href="img/import-choose-dark.png" target="_blank" rel="noopener"><img src="img/import-choose-dark.png" width="1920" height="1200" loading="lazy" alt="Configuration, Confluence Import, after reading the Whitfields' site backup: it has 5 spaces, each checked, with its pages, files, comments and earlier versions counted, and a name and space key for the new space. In dark mode."></a>
+      <a class="shot-light" href="img/import-choose-light.png" target="_blank" rel="noopener"><img src="img/import-choose-light.webp" width="1600" height="1000" loading="lazy" alt="Configuration, Confluence Import, after reading the Whitfields' site backup: it has 5 spaces, each checked, with its pages, files, comments and earlier versions counted, and a name and space key for the new space."></a>
+      <a class="shot-dark" href="img/import-choose-dark.png" target="_blank" rel="noopener"><img src="img/import-choose-dark.webp" width="1600" height="1000" loading="lazy" alt="Configuration, Confluence Import, after reading the Whitfields' site backup: it has 5 spaces, each checked, with its pages, files, comments and earlier versions counted, and a name and space key for the new space. In dark mode."></a>
       <figcaption>Before the import: the export read, its five spaces counted and checked.</figcaption>
     </figure>
 

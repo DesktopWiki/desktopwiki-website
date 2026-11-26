@@ -470,10 +470,22 @@ footer {
    Above it the page uses the whole window: the card grids add columns as the window widens
    (about 9 across at 2560px), while paragraphs keep a comfortable line length. */
 
+/* The row of three smaller pictures under the hero's big one. */
+.hero-rule { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.25); margin: 8px 0 26px; max-width: 960px; }
+.mini-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 960px; margin-bottom: 26px; }
+.shot.mini-shot { margin: 0; }
+.shot.mini-shot img { border-color: rgba(255, 255, 255, 0.25); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+.shot.mini-shot figcaption { color: var(--hero-muted); font-size: 0.9rem; margin-top: 8px; }
+.shot.mini-shot figcaption a { color: var(--hero-text); font-weight: 600; }
+@media (max-width: 600px) {
+  .mini-shots { grid-template-columns: 1fr; gap: 18px; }
+}
+
 @media (min-width: 1280px) {
   .wrap { max-width: none; padding: 0 clamp(24px, 3vw, 72px); }
   .hero h1 { font-size: 2.5rem; max-width: 1200px; }
   .shot.hero-shot { max-width: 1400px; }
+  .hero-rule, .mini-shots { max-width: 1400px; }
   .lede, .demo-note, .setup-note, .section-lede, .beta-note, .doc > *, .feature-page > p { max-width: 860px; }
   .grid { gap: 20px; }
   .tiers, .savings { max-width: 1240px; }

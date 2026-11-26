@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Back up the family&#39;s PCs (admins) - DesktopWiki</title>
+  <meta name="description" content="Back up each family PC&#39;s Documents, Pictures and Desktop to your DesktopWiki PC every day, with old versions, restore and alerts when a backup is missed.">
+  <link rel="canonical" href="https://desktopwiki.com/help/family-pc-backup.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="DesktopWiki">
+  <meta property="og:title" content="Back up the family&#39;s PCs (admins) - DesktopWiki">
+  <meta property="og:description" content="Back up each family PC&#39;s Documents, Pictures and Desktop to your DesktopWiki PC every day, with old versions, restore and alerts when a backup is missed.">
+  <meta property="og:url" content="https://desktopwiki.com/help/family-pc-backup.html">
+  <meta property="og:image" content="https://desktopwiki.com/features/img/wiki-light.png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="DesktopWiki&#39;s Household space with its page tree and the page The furnace.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Back up the family&#39;s PCs (admins) - DesktopWiki">
+  <meta name="twitter:description" content="Back up each family PC&#39;s Documents, Pictures and Desktop to your DesktopWiki PC every day, with old versions, restore and alerts when a backup is missed.">
+  <meta name="twitter:image" content="https://desktopwiki.com/features/img/wiki-light.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://desktopwiki.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Help",
+      "item": "https://desktopwiki.com/help/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Back up the family's PCs (admins)",
+      "item": "https://desktopwiki.com/help/family-pc-backup.html"
+    }
+  ]
+}
+  </script>
+  <link rel="icon" type="image/png" href="../dw-logo-96.png">
+  <link rel="apple-touch-icon" href="../dw-logo-180.png">
+  <link rel="stylesheet" href="../styles.css">
+  <script>
+    // Set the theme before the page draws, so it never flashes the wrong one.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script src="../theme.js" defer></script>
+</head>
+<body>
+  <!-- Written by tools/Build-HelpSite.ps1 in the desktopwiki repository from src/DesktopWiki/web/help/articles.json. Change the article there, not here. -->
+  <header class="hero hero-small">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../">
+          <img src="../dw-logo-96.png" width="40" height="40" alt="">
+          <span>DesktopWiki</span>
+        </a>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode">
+          <span class="icon" aria-hidden="true">&#9790;</span><span class="label">Dark mode</span>
+        </button>
+      </div>
+      <p class="crumb"><a href="./">Help</a> &rsaquo; Back up the family&#39;s PCs (admins)</p>
+      <h1>Back up the family&#39;s PCs (admins)</h1>
+      <p class="lede lede-under">DesktopWiki Helper on each family PC backs up its people&#39;s folders to the wiki&#39;s PC, with versions, restore and alerts.</p>
+    </div>
+  </header>
+
+  <main class="wrap doc">
+    <p class="muted">Last updated Nov 26, 2026</p>
+    <p>Open <strong>Network → Family PCs</strong> and add a PC by its name. On that PC, sign in to Windows as an administrator, open the PC's page, download <strong>DesktopWiki Helper</strong>, open it and paste the setup code. The helper runs as a Windows service, so it backs up even when no one is signed in, and a child on a standard account can't stop it.</p><p>Choose whose folders (Desktop, Documents, Pictures and more), how often, how much room the PC may use, and how long old versions and deleted files are kept. Only changed files are sent, and each file's contents are kept once. You're told on the bell when a PC hasn't backed up in its time, when it's full, and when files were put back.</p><p><strong>Browse and restore files</strong> shows a PC's folders as they are now or as they were on a day, and the files deleted since. Download a file or a folder (.zip), or have the helper put it back on the PC, in a new folder or where it was. The backups are on the wiki's PC only: keep that PC's own backups elsewhere too.</p>
+    <p>Still stuck? Write to <a href="mailto:support@desktopwiki.com">support@desktopwiki.com</a>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>&copy; 2026 <a href="https://emukey.com">EmuKey LLC</a></span>
+      <nav aria-label="Legal"><a href="../privacy.html">Privacy</a><a href="../license.html">License and refunds</a></nav>
+    </div>
+  </footer>
+  <!-- Cloudflare Web Analytics: page views only, no cookies (see privacy.html, "This website"). -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "7148a318f96e41529fcc2a9a115c41bf"}'></script>
+</body>
+</html>
